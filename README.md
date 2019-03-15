@@ -39,13 +39,14 @@ This command will publish in your application this folders:
 - /public/vendor/laravel-responsive-gallery/images/
 
 #### Load the JS file
-In your app.js file you can require the accordion.js file before the Vue object get instanciated:
+In your app.js file you can require the bricklayer and responsiveGallery.js files before the Vue object get instanciated:
 
 ```
 require('./bootstrap');
 window.Vue = require('vue');
 
-require('./vendor/laravel-responsive-gallery/accordion');
+window.Bricklayer = require('bricklayer');
+require('./vendor/laravel-responsive-gallery/responsiveGallery');
 
 window.myApp = new Vue({  
     el: '#app'
@@ -60,8 +61,11 @@ Import from the vendor folder of the package the SCSS and the JS.
 Then to replace all the occurrance of the accordion snippets:
 
 ```php
-$accordion = new AccordionFactory('caret-svg');
-$accordion->replace_accordion_strings_with_template($body);
+$gallery = new ResponsiveGalleryFactory();
+$body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
+{# gallery src=[gallery/contact_improvisation] width=[400] height=[300] #}
+<br /> Etiam aliquet orci tortor. ";
+$body = $accordion->replace_accordion_strings_with_template($body);
 ```
 
 ## Contributing
