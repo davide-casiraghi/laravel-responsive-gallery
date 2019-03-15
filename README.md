@@ -5,6 +5,7 @@
 # Laravel Responsive Gallery
 A PHP library to create responsive galleries that are organized into Pinterest like columns.   
 To generate the grid is used Bricklayer.js.
+To open the image in a popup is used Fancybox 3.
 
 The library replace all the occurrences of this snippet
 ```
@@ -12,7 +13,18 @@ The library replace all the occurrences of this snippet
 ```
 With the HTML code of a responsive gallery.
 ```html
-<div class='responsiveGallery bricklayer' id='my-bricklayer'><div class='box animated'><a href='gallery/contact_improvisation/IMG_1584.jpg' data-fancybox='images' data-caption=''><img src='gallery/contact_improvisation/thumb/IMG_1584.jpg' /></a></div></div>
+<div class='responsiveGallery bricklayer' id='my-bricklayer'>
+    <div class='box'>
+        <a href='gallery/contact_improvisation/IMG_1584.jpg' data-fancybox='images' data-caption=''>
+            <img src='gallery/holidays/thumb/IMG_1584.jpg' />
+        </a>
+    </div>
+    <div class='box'>
+        <a href='gallery/contact_improvisation/IMG_1244.jpg' data-fancybox='images' data-caption=''>
+            <img src='gallery/holidays/thumb/IMG_1244.jpg' />
+        </a>
+    </div>
+</div>
 ```
 
 
@@ -24,11 +36,12 @@ To use the package you should import it trough composer.
 composer require davide-casiraghi/laravel-responsive-gallery
 ```
 
-Then install Bricklayer.js  
+Then install Bricklayer.js  and Fancybox 3
 ```bash
-npm install bricklayer --save
+npm install bricklayer  
+npm install @fancyapps/fancybox  
 ```
-https://github.com/ademilter/bricklayer/wiki/Quick-Start#1-install-bricklayer
+
 
 
 
