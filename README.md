@@ -59,8 +59,11 @@ This command will publish in your application this folders:
 - /resources/js/vendor/laravel-responsive-gallery/
 - /public/vendor/laravel-responsive-gallery/images/
 
+In this way it's possible for you to customize them.
+
 #### Load the JS file
-In your app.js file you can require the **Bricklayer**, **Fancybox 3** and **responsiveGallery.js** files before the Vue object get instanciated:
+
+In the **resources/js/app.js** file of your application require the **Bricklayer**, **Fancybox 3** and **responsiveGallery.js** files before the Vue object get instanciated:
 
 ```
 require('./bootstrap');
@@ -73,14 +76,19 @@ import '@fancyapps/fancybox';
 window.myApp = new Vue({  
     el: '#app'
 });
-
-
 ```
 
+In the **resources/sass/app.scss** file of your application import the scss
+```
+@import 'vendor/laravel-responsive-gallery/responsiveGallery';
+```
+
+Then you can run Laravel Mix
+```
+npm run dev
+```
 
 ## Usage
-
-Import from the vendor folder of the package the SCSS and the JS.
 
 Then to replace all the occurrance of the accordion snippets:
 
