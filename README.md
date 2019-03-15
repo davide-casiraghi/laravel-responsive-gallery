@@ -1,5 +1,6 @@
 # Laravel Responsive Gallery
 A PHP library to create responsive galleries that are organized into Pinterest like columns. 
+To generate the grid is used Bricklayer.js.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/davide-casiraghi/laravel-responsive-gallery.svg?style=flat-square)](https://packagist.org/packages/davide-casiraghi/laravel-responsive-gallery)
 <a href="https://travis-ci.org/davide-casiraghi/laravel-responsive-gallery"><img src="https://travis-ci.org/davide-casiraghi/laravel-responsive-gallery.svg" alt="Build Status"></a>
@@ -23,6 +24,14 @@ To use the package you should import it trough composer.
 ```bash
 composer require davide-casiraghi/laravel-responsive-gallery
 ```
+
+Then install Bricklayer.js  
+```bash
+npm install bricklayer --save
+```
+https://github.com/ademilter/bricklayer/wiki/Quick-Start#1-install-bricklayer
+
+
 
 ## Load the CSS and JS files
 
