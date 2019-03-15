@@ -130,7 +130,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $galleryHtml = $gallery->prepareGallery($images);
         //var_dump($galleryHtml);
         $this->assertStringContainsString(
-            "<div class='gallery'><div class='item animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' /></a></div></div>",
+            "<div class='responsiveGallery bricklayer' id='my-bricklayer'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' /></a></div></div>",
             $galleryHtml);
     }
     
