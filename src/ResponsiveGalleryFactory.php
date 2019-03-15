@@ -164,8 +164,8 @@ class ResponsiveGalleryFactory
         // Animate item on hover
             $itemClass = "animated";
 
-        // Create Grid—A—Licious grid (id=devices) and print images
-            $ret = "<div class='gallery'>";
+        // The gallery HTML
+            $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer'>";
 
                 foreach ($images as $k => $image) {
 
@@ -173,7 +173,7 @@ class ResponsiveGalleryFactory
                         $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
                         $videoPlayIcon = ($image['video_link'] == null) ? "" : "<i class='far fa-play-circle'></i>";
 
-                    $ret .= "<div class='item ".$itemClass."'>";
+                    $ret .= "<div class='box ".$itemClass."'>";
                         $ret .= "<a href='".$imageLink."' data-fancybox='images' data-caption='".$image['description']."'>";
                             $ret .= "<img src='".$image['thumb_path']."' />";
                             $ret .= $videoPlayIcon;

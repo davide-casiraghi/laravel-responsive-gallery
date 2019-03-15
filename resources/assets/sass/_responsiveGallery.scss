@@ -1,0 +1,16 @@
+
+.responsiveGallery{
+	
+	@media screen and (min-width: 300px) {
+		.bricklayer-column-sizer {
+		flex-basis: 350px;
+		}
+	}
+
+	.box{
+		margin-bottom: 10px;
+	}
+	.bricklayer-column{
+		padding: 0 5px;
+	}
+}
