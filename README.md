@@ -1,5 +1,5 @@
 # Laravel Responsive Gallery
-A PHP library to create responsive galleries that are organized into Pinterest like columns. 
+A PHP library to create responsive galleries that are organized into Pinterest like columns.   
 To generate the grid is used Bricklayer.js.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/davide-casiraghi/laravel-responsive-gallery.svg?style=flat-square)](https://packagist.org/packages/davide-casiraghi/laravel-responsive-gallery)
