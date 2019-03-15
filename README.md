@@ -90,8 +90,8 @@ npm run dev
 
 ## Usage
 
-You can use the method getGallery() in the show() method of any controller.  
 Passing any text as parameter you will get back the same text with all the occurrences of the gallery snippet substituted with the gallery HTML code.
+If you are using **Laravel**, you can use the method getGallery() in the show() method of any controller.  
 
 ```php
 $gallery = new ResponsiveGalleryFactory();
