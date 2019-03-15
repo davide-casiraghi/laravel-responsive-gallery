@@ -99,7 +99,8 @@ $body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
          {# gallery src=[holiday_images/london] width=[400] height=[300] #}
          <br /> Etiam aliquet orci tortor. ";
 
-$body = $accordion->replace_accordion_strings_with_template($body);
+$publicPath = public_path("storage");
+$body = $gallery->getGallery($body, $publicPath);
 ```
 
 ## Contributing
