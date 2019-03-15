@@ -12,7 +12,7 @@ The library replace all the occurrences of this snippet
 ```
 With the HTML code of a responsive gallery.
 ```html
-example code here
+<div class='responsiveGallery bricklayer' id='my-bricklayer'><div class='box animated'><a href='gallery/contact_improvisation/IMG_1584.jpg' data-fancybox='images' data-caption=''><img src='gallery/contact_improvisation/thumb/IMG_1584.jpg' /></a></div></div>
 ```
 
 
