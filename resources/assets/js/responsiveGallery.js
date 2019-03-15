@@ -15,6 +15,16 @@ $(document).ready(function () {
            anotherBox.style.transform = "rotate(10deg)";
            bricklayer.append(anotherBox);
     }
-    
-    
 });
+
+function box() {
+    var color = '#' + Math.random().toString(16).substr(-6);
+    var heights = [30, 50, 70, 90, 100, 120];
+    var randomHeight = heights[Math.floor(Math.random() * heights.length)];
+    var box = document.createElement('div');
+    
+    box.className = 'box';
+    box.style.backgroundColor = color;
+    box.style.height = randomHeight + "px";
+    return box;
+}
