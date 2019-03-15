@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     
-    if( $(".gallery").length ){
+    if( $(".responsiveGallery").length ){
     // You have to create a `Bricklayer` instance for every Bricklayer container you have.
            var bricklayer = new Bricklayer(document.getElementById('my-bricklayer'));
 
