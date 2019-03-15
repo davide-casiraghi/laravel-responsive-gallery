@@ -90,7 +90,8 @@ npm run dev
 
 ## Usage
 
-Then to replace all the occurrance of the accordion snippets:
+You can use the method getGallery() in the show() method of any controller.  
+Passing any text as parameter you will get back the same text with all the occurrences of the gallery snippet substituted with the gallery HTML code.
 
 ```php
 $gallery = new ResponsiveGalleryFactory();
@@ -101,6 +102,11 @@ $body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
 
 $publicPath = public_path("storage");
 $body = $gallery->getGallery($body, $publicPath);
+```
+
+Then in the Blade view.
+```php
+{!!$body!!}
 ```
 
 ## Contributing
