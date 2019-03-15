@@ -19,7 +19,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
     /** @test */
     public function it_returns_two_gallery_occurrences()
     {
-        $text = 'Lorem ipsum {# gallery src=[holiday_images/london] width=[400] height=[300] #} sid amet {# gallery src=[holiday_images/paris] width=[400] height=[300] #}';
+        $text = 'Lorem ipsum {# gallery src=[holiday_images/london] column_width=[400] gutter=[2] #} sid amet {# gallery src=[holiday_images/paris] column_width=[400] gutter=[2] #}';
         $gallery = new ResponsiveGalleryFactory();
         $matches = $gallery->getGallerySnippetOccurrences($text);
 
@@ -30,13 +30,13 @@ class ResponsiveGalleryFactoryTest extends TestCase
     public function it_gets_gallery_parameters()
     {
         $single_gallery_matches = [
-            0 => '{# gallery src=[holiday_images/london] width=[400] height=[300] #}',
+            0 => '{# gallery src=[holiday_images/london] column_width=[400] gutter=[2] #}',
             1 => 'src',
             2 => 'holiday_images/london',
-            3 => 'width',
+            3 => 'column_width',
             4 => '400',
-            5 => 'height',
-            6 => '300',
+            5 => 'gutter',
+            6 => '2',
         ];
 
         $gallery = new ResponsiveGalleryFactory();

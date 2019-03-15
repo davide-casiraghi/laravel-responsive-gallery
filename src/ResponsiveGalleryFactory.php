@@ -22,8 +22,8 @@ class ResponsiveGalleryFactory
         // Get activation string parameters (from article)
         $ret['token'] = $matches[0];
         $subDir = $matches[2];
-        $ret['photo_width'] = $matches[4];
-        $ret['photo_height'] = $matches[6];
+        $ret['column_width'] = $matches[4];
+        $ret['gutter'] = $matches[6];
 
         // Directories
         $ret['images_dir'] = $publicPath.'/'.$subDir.'/';
@@ -244,7 +244,7 @@ class ResponsiveGalleryFactory
     {
         $re = '/{\#
                 \h+gallery
-                \h+(src|width|height)=\[([^]]*)]
+                \h+(src|column_width|gutter)=\[([^]]*)]
                 \h+((?1))=\[([^]]*)]
                 \h+((?1))=\[([^]]*)]
                 \h*\#}/x';
