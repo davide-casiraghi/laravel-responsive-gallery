@@ -1,6 +1,6 @@
 {
     "name": "davide-casiraghi/laravel-responsive-gallery",
-    "description": "A PHP library to create responsive galleries that are organized into Pinterest like columns.  The galleries are based on Bricklayer.js library.",
+    "description": "A PHP library to create responsive galleries that are organized into Pinterest like columns. ",
     "type": "library",
     "license": "MIT",
     "authors": [
