@@ -11,6 +11,3 @@ before_script:
 # the script we want to run
 script:
     - vendor/bin/phpunit
-    
-    
-    
