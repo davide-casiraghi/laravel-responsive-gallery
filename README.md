@@ -15,12 +15,12 @@ With the HTML code of a responsive gallery.
 ```html
 <div class='responsiveGallery bricklayer' id='my-bricklayer'>
     <div class='box'>
-        <a href='gallery/contact_improvisation/IMG_1584.jpg' data-fancybox='images' data-caption=''>
+        <a href='gallery/holidays/IMG_1584.jpg' data-fancybox='images' data-caption=''>
             <img src='gallery/holidays/thumb/IMG_1584.jpg' />
         </a>
     </div>
     <div class='box'>
-        <a href='gallery/contact_improvisation/IMG_1244.jpg' data-fancybox='images' data-caption=''>
+        <a href='gallery/holidays/IMG_1244.jpg' data-fancybox='images' data-caption=''>
             <img src='gallery/holidays/thumb/IMG_1244.jpg' />
         </a>
     </div>
