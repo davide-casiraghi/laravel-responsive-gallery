@@ -177,12 +177,10 @@ class ResponsiveGalleryFactory
         // The gallery HTML
             $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer'>";
 
-
-        foreach ($images as $k => $image) {
-
-                    // Get item link
-                        $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
-                        $videoPlayIcon = ($image['video_link'] == null) ? "" : "<i class='far fa-play-circle'></i>";
+                foreach ($images as $k => $image) {
+                    
+                    $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
+                    $videoPlayIcon = ($image['video_link'] == null) ? "" : "<i class='far fa-play-circle'></i>";
 
                     $ret .= "<div class='box ".$itemClass."'>";
                         $ret .= "<a href='".$imageLink."' data-fancybox='images' data-caption='".$image['description']."'>";
@@ -192,7 +190,7 @@ class ResponsiveGalleryFactory
                     $ret .= "</div>";
                 }
 
-        $ret .= '</div>';
+            $ret .= '</div>';
 
         return $ret;
     }
