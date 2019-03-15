@@ -2,18 +2,18 @@
 
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
-use DavideCasiraghi\ResponsiveGallery\GalleryFactory;
+use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
 use PHPUnit\Framework\TestCase; 
 
-class GalleryFactoryTest extends TestCase
+class ResponsiveGalleryFactoryTest extends TestCase
 {
     /** @test */
     public function it_returns_file_extension()
     {
         $fileName = "testImage.jpg";
         
-        $extension = GalleryFactory::get_file_extension($fileName);
+        $extension = ResponsiveGalleryFactory::get_file_extension($fileName);
         $this->assertEquals($extension, "jpg");
     }
     
@@ -21,7 +21,7 @@ class GalleryFactoryTest extends TestCase
     public function it_returns_two_gallery_occurrences()
     {
         $text = "Lorem ipsum {# gallery src=[holiday_images/london] width=[400] height=[300] #} sid amet {# gallery src=[holiday_images/paris] width=[400] height=[300] #}";
-        $gallery = new GalleryFactory();
+        $gallery = new ResponsiveGalleryFactory();
         $matches = $gallery->getGallerySnippetOccurrences($text);
         
         $this->assertContains("holiday_images/london", $matches[0]);
@@ -40,8 +40,9 @@ class GalleryFactoryTest extends TestCase
             6 => "300",
         ];
   
-        $gallery = new GalleryFactory();
-        $parameters = $gallery->getGalleryParameters($single_gallery_matches);
+        $gallery = new ResponsiveGalleryFactory();
+        $publicPath = "/images";
+        $parameters = $gallery->getGalleryParameters($single_gallery_matches, $publicPath);
         //var_dump($parameters['images_dir']);
         
         $this->assertSame("/images/holiday_images/london/", $parameters['images_dir']);
@@ -51,7 +52,7 @@ class GalleryFactoryTest extends TestCase
     /** @test */
     public function it_read_dir_and_get_images_file_names()
     {
-        $gallery = new GalleryFactory();
+        $gallery = new ResponsiveGalleryFactory();
         $images_dir = __DIR__."/test_images";
         $imageNamesArray = $gallery->getImageFiles($images_dir);
         
@@ -69,7 +70,7 @@ class GalleryFactoryTest extends TestCase
         
         $thumbs_dir = __DIR__."/test_images/thumb/";
         
-        $gallery = new GalleryFactory();
+        $gallery = new ResponsiveGalleryFactory();
         
         $gallery->generate_single_thumb_file($filePath, $thumbPath, $thumbWidth, $thumbHeight);
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
@@ -93,7 +94,7 @@ class GalleryFactoryTest extends TestCase
         $thumbs_size['height'] = 40;
         $image_files = ['test_image_1.jpg'];
         
-        $gallery = new GalleryFactory();
+        $gallery = new ResponsiveGalleryFactory();
         $gallery->generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files);
         
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
@@ -108,7 +109,7 @@ class GalleryFactoryTest extends TestCase
         $image_data = null;
         $gallery_url = __DIR__."/test_images/";
         
-        $gallery = new GalleryFactory();
+        $gallery = new ResponsiveGalleryFactory();
         $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url);
         
         $this->assertStringContainsString('test_image_1.jpg',$images[0]['file_path']);
@@ -125,7 +126,7 @@ class GalleryFactoryTest extends TestCase
             'video_link' => NULL,
         ];
         
-        $gallery = new GalleryFactory();
+        $gallery = new ResponsiveGalleryFactory();
         $galleryHtml = $gallery->prepareGallery($images);
         //var_dump($galleryHtml);
         $this->assertStringContainsString(

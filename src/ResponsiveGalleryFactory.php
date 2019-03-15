@@ -2,7 +2,7 @@
 
 namespace DavideCasiraghi\ResponsiveGallery;
 
-class GalleryFactory
+class ResponsiveGalleryFactory
 {
     
     /************************************************************************/
