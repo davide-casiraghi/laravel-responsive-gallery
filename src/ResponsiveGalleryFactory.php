@@ -175,20 +175,21 @@ class ResponsiveGalleryFactory
         $itemClass = 'animated';
 
         // The gallery HTML
-            $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer'>";
+        $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer'>";
 
-                foreach ($images as $k => $image) {
-                    
-                    $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
-                    $videoPlayIcon = ($image['video_link'] == null) ? "" : "<i class='far fa-play-circle'></i>";
+        foreach ($images as $k => $image) {
 
-                    $ret .= "<div class='box ".$itemClass."'>";
-                        $ret .= "<a href='".$imageLink."' data-fancybox='images' data-caption='".$image['description']."'>";
-                            $ret .= "<img src='".$image['thumb_path']."' />";
-                            $ret .= $videoPlayIcon;
-                        $ret .= "</a>";
-                    $ret .= "</div>";
-                }
+            // Get item link
+            $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
+            $videoPlayIcon = ($image['video_link'] == null) ? '' : "<i class='far fa-play-circle'></i>";
+
+            $ret .= "<div class='box ".$itemClass."'>";
+            $ret .= "<a href='".$imageLink."' data-fancybox='images' data-caption='".$image['description']."'>";
+            $ret .= "<img src='".$image['thumb_path']."' />";
+            $ret .= $videoPlayIcon;
+            $ret .= '</a>';
+            $ret .= '</div>';
+        }
 
             $ret .= '</div>';
 

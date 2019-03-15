@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 namespace DavideCasiraghi\ResponsiveGallery;
 
-use \Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class GalleryServiceProvider extends ServiceProvider
+class ResponsiveGalleryServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -14,9 +14,8 @@ class GalleryServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/assets/js' => resource_path('js/vendor/laravel-responsive-gallery/'),
         ], 'js');
-        
     }
-    
+
     public function register()
     {
     }
