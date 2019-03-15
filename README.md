@@ -60,7 +60,7 @@ This command will publish in your application this folders:
 - /public/vendor/laravel-responsive-gallery/images/
 
 #### Load the JS file
-In your app.js file you can require the bricklayer and responsiveGallery.js files before the Vue object get instanciated:
+In your app.js file you can require the **Bricklayer**, **Fancybox 3** and **responsiveGallery.js** files before the Vue object get instanciated:
 
 ```
 require('./bootstrap');
@@ -68,10 +68,13 @@ window.Vue = require('vue');
 
 window.Bricklayer = require('bricklayer');
 require('./vendor/laravel-responsive-gallery/responsiveGallery');
+import '@fancyapps/fancybox';
 
 window.myApp = new Vue({  
     el: '#app'
 });
+
+
 ```
 
 
