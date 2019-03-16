@@ -4,37 +4,30 @@
 	
 	@media screen and (min-width: 300px) {
 		
-		&[data-column-width="150"]{
-			.bricklayer-column-sizer {
-				flex-basis: 150px;
-			}
-		}
-		&[data-column-width="200"]{
-			.bricklayer-column-sizer {
-				flex-basis: 200px;
-			}
-		}
-		&[data-column-width="250"]{
-			.bricklayer-column-sizer {
-				flex-basis: 250px;
-			}
-		}
-		&[data-column-width="300"]{
-			.bricklayer-column-sizer {
-				flex-basis: 300px;
-			}
-		}
-		&[data-column-width="350"]{
-			.bricklayer-column-sizer {
-				flex-basis: 350px;
-			}
-		}
-		&[data-column-width="400"]{
-			.bricklayer-column-sizer {
-				flex-basis: 400px;
+		/* column-width can be set to: 150, 200, 250, 300, 350, 400 */
+		@for $i from 3 through 8 {
+			$columnWidth: $i * 50;
+			&[data-column-width="#{$columnWidth}"]{
+				.bricklayer-column-sizer {
+					flex-basis: #{$columnWidth}px;
+				}
 			}
 		}
 		
+		/* gutter can be set to: 0, 10, 20, 30, 40, 50 */
+		@for $i from 0 through 5 {
+			$gutter: $i * 10;
+			&[data-gutter="#{$gutter}"]{
+				.bricklayer-column{
+					padding: 0 #{$gutter/2}px;
+					.box{
+						margin-bottom: #{$gutter}px;
+					}
+				}
+			}
+		}
+		
+		/*
 		&[data-gutter="0"]{
 			.bricklayer-column{
 				padding: 0;
@@ -82,7 +75,7 @@
 					margin-bottom: 50px;
 				}
 			}
-		}
+		}*/
 		
 	}
 
