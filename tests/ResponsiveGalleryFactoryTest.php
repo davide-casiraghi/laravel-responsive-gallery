@@ -122,11 +122,20 @@ class ResponsiveGalleryFactoryTest extends TestCase
             'video_link' => null,
         ];
 
+        $parameters = [
+            'token' => '{# gallery src=[holiday_images/london] column_width=[250] gutter=[20] #}',
+            'column_width' => '250',
+            'gutter' => '20',
+            'images_dir' => 'public/storage/holiday_images/london/',
+            'thumbs_dir' => 'public/storage/holiday_images/london/thumb/',
+            'thumbs_size' => ['width' => 200, 'height' => 150],
+        ];
+
         $gallery = new ResponsiveGalleryFactory();
-        $galleryHtml = $gallery->prepareGallery($images);
-        //var_dump($galleryHtml);
+        $galleryHtml = $gallery->prepareGallery($images, $parameters);
+        //var_dump($parameters);
         $this->assertStringContainsString(
-            "<div class='responsiveGallery bricklayer' id='my-bricklayer'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' /></a></div></div>",
+            "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' /></a></div></div>",
             $galleryHtml);
     }
 }
