@@ -8,7 +8,7 @@ A PHP library to create responsive galleries that are organized into Pinterest l
 To generate the grid is used [Bricklayer.js](http://bricklayer.js.org/).
 To open the image in a popup is used [Fancybox 3](https://fancyapps.com/fancybox/3/).
 
-The library replace all the occurrences of this snippet
+The library replace all the occurrences of this kind of snippet
 ```
 {# gallery src=[holiday_images/london] column_width=[250] gutter=[20] #}
 ```
