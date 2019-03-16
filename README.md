@@ -28,7 +28,9 @@ With the HTML code of a responsive gallery.
 </div>
 ```
 
-Check out the documentation ->
+## How to use it
+[Read Tutorial and Documentation →](https://github.com/davide-casiraghi/laravel-responsive-gallery/wiki)
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
