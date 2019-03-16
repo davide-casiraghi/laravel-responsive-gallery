@@ -191,7 +191,7 @@ class ResponsiveGalleryFactory
             $ret .= '</div>';
         }
 
-            $ret .= '</div>';
+        $ret .= '</div>';
 
         return $ret;
     }
