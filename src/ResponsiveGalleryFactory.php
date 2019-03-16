@@ -168,14 +168,14 @@ class ResponsiveGalleryFactory
      *  @param ****array $desired_width     width of the thumbnail
      *  @return string $ret             the HTML to print on screen
      **/
-    public function prepareGallery($images)
+    public function prepareGallery($images, $parameters)
     {
-
+        //dd($parameters);
         // Animate item on hover
         $itemClass = 'animated';
 
         // The gallery HTML
-        $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer'>";
+        $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'>";
 
         foreach ($images as $k => $image) {
 
@@ -286,7 +286,7 @@ class ResponsiveGalleryFactory
                     $images = $this->createImagesArray($image_files, $image_data, $parameters['gallery_url']);
 
                     // Prepare Gallery HTML
-                    $galleryHtml = $this->prepareGallery($images);
+                    $galleryHtml = $this->prepareGallery($images, $parameters);
                 } else {
                     $galleryHtml = "<div class='alert alert-warning' role='alert'>The directory specified exist but it doesn't contain images</div>";
                 }

@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DavideCasiraghi\\ResponsiveGallery\\GalleryServiceProvider"
+                "DavideCasiraghi\\ResponsiveGallery\\ResponsiveGalleryServiceProvider"
             ],
             "aliases": {
                 "Gallery": "DavideCasiraghi\\ResponsiveGallery\\Facades\\Gallery"
