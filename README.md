@@ -25,6 +25,7 @@ With the HTML code of a responsive gallery.
             <img src='gallery/holidays/thumb/IMG_1244.jpg' />
         </a>
     </div>
+    ...
 </div>
 ```
 
