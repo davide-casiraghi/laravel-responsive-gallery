@@ -10,11 +10,11 @@ To open the image in a popup is used Fancybox 3.
 
 The library replace all the occurrences of this snippet
 ```
-{# gallery src=[holiday_images/london] column_width=[300] gutter=[2] #}
+{# gallery src=[holiday_images/london] column_width=[250] gutter=[20] #}
 ```
 With the HTML code of a responsive gallery.
 ```html
-<div class='responsiveGallery bricklayer' id='my-bricklayer'>
+<div class='responsiveGallery bricklayer' data-column-width="250" data-gutter="20">
     <div class='box'>
         <a href='gallery/holidays/IMG_1584.jpg' data-fancybox='images' data-caption=''>
             <img src='gallery/holidays/thumb/IMG_1584.jpg' />
