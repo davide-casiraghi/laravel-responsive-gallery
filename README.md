@@ -102,8 +102,14 @@ $body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
 
 $publicPath = public_path("storage");
 $body = $gallery->getGallery($body, $publicPath);
-```
 
+### Parameters
+- src
+- column_width: it can be set to this specific values (150,200,250,300,350,400). If you need you can add more in the SCSS file.
+- gutter: it can be set to this specific values (1,2,3,4,5,6). 
+
+
+```
 Then in the Blade view.
 ```php
 {!!$body!!}
