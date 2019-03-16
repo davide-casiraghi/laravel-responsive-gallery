@@ -5,8 +5,8 @@
 
 # Laravel Responsive Gallery
 A PHP library to create responsive galleries that are organized into Pinterest like columns.   
-To generate the grid is used Bricklayer.js.
-To open the image in a popup is used Fancybox 3.
+To generate the grid is used [Bricklayer.js](http://bricklayer.js.org/).
+To open the image in a popup is used [Fancybox 3](https://fancyapps.com/fancybox/3/).
 
 The library replace all the occurrences of this snippet
 ```
