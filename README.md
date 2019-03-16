@@ -105,9 +105,9 @@ $body = $gallery->getGallery($body, $publicPath);
 ```
 
 ### Parameters
-- src
-- column_width: it can be set to this specific values (150,200,250,300,350,400). If you need you can add more in the SCSS file.
-- gutter: it can be set to this specific values (1,2,3,4,5,6). 
+- **src**: the subpath of the storage folder that contains the galleries photos.
+- **column_width**: it can be set to this specific values (150,200,250,300,350,400). If you need you can add more in the SCSS file.
+- **gutter**: it can be set to this specific values (1,2,3,4,5,6). 
 
 Then in the Blade view.
 ```php
