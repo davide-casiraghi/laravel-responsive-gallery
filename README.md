@@ -9,7 +9,7 @@ To open the image in a popup is used Fancybox 3.
 
 The library replace all the occurrences of this snippet
 ```
-{# gallery src=[holiday_images/london] width=[400] height=[300] #}
+{# gallery src=[holiday_images/london] column_width=[300] gutter=[2] #}
 ```
 With the HTML code of a responsive gallery.
 ```html
@@ -97,7 +97,7 @@ If you are using **Laravel**, you can use the method getGallery() in the show() 
 $gallery = new ResponsiveGalleryFactory();
 
 $body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-         {# gallery src=[holiday_images/london] width=[400] height=[300] #}
+         {# gallery src=[holiday_images/london] column_width=[300] gutter=[2] #}
          <br /> Etiam aliquet orci tortor. ";
 
 $publicPath = public_path("storage");
