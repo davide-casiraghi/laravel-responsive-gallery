@@ -21,7 +21,10 @@ class DatabaseTest extends MockeryTestCase
         $tableName = 'photos';
         
         $returnValue = new DB();
-            $returnValue->last = "date";
+            $returnValue->file_name = "DSC_9470.jpg";
+            $returnValue->description = "Photo description";
+            $returnValue->alt_text = "Photo alt text";
+            $returnValue->video_link = "https://www.youtube.com/fsda234";
         
     
         $mock = \Mockery::mock('DB');        
