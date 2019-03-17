@@ -1,7 +1,8 @@
 <?php 
     return[
-            'table-name' => '',
-            'photo-filename-field' => '',
-            'photo-description-field' => '',
-            'photo-alt-text-field' => '',
+            'table_name' => '',
+            'field_filename' => '',
+            'field_description' => '',
+            'field_alt_text' => '',
+            'field_video_link' => '',
     ];

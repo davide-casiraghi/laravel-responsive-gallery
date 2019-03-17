@@ -2,6 +2,8 @@
 
 namespace DavideCasiraghi\ResponsiveGallery;
 
+use Illuminate\Support\Facades\DB;
+
 class ResponsiveGalleryFactory
 {
     /************************************************************************/
@@ -255,9 +257,42 @@ class ResponsiveGalleryFactory
             return;
         }
     }
+    
+    /************************************************************************/
+    /**
+     *  Retrieve the datas from the package config file (published and edited by the user)
+     *  @param none
+     *  @return array $ret - the config parapeters
+     **/
+    public function getPhotoDatas($photoFileName)
+    {
+        
+        $table_name = config('random-quote.table_name');
+        $field_file_name = config('random-quote.field_filename');
+        $field_description = config('random-quote.field_description');
+        $field_alt_text = config('random-quote.field_alt_text');
+        $field_video_link = config('random-quote.field_video_link');
+
+        
+        $photoTableDatas = DB::table($tableName)->get();
+        
+        /*$photoTableDatas = Cache::get('photo_datas', function () {
+            return  DB::table($tableName)->get();
+        });*/
+        
+        $singlePhotoDatas->contains($field_file_name, $photoFileName);
+        
+        $ret['file_name'] = $singlePhotoDatas->contains($field_file_name, $photoFileName);
+        $ret['description']
+        $ret['alt_text']
+        $ret['video_link']
+        
+                        
+
+        return $ret;
+    }
 
     /************************************************************************/
-
     /**
      *  Return the post body with the gallery HTML instead of the found snippet.
      *  @param array $file_name        the file name
