@@ -283,9 +283,9 @@ class ResponsiveGalleryFactory
         $singlePhotoDatas->contains($field_file_name, $photoFileName);
         
         $ret['file_name'] = $singlePhotoDatas->contains($field_file_name, $photoFileName);
-        $ret['description']
-        $ret['alt_text']
-        $ret['video_link']
+        $ret['description'] = null;
+        $ret['alt_text'] = null;
+        $ret['video_link'] = null;
         
                         
 

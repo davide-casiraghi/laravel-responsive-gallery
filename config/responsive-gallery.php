@@ -1,6 +1,6 @@
 <?php 
     return[
-            'table_name' => '',
+            'table_name' => 'photos',
             'field_filename' => '',
             'field_description' => '',
             'field_alt_text' => '',
