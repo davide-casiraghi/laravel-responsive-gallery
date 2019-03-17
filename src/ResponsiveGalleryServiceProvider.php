@@ -18,5 +18,6 @@ class ResponsiveGalleryServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/responsive-gallery.php', 'responsive-gallery’);
     }
 }
