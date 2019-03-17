@@ -27,15 +27,26 @@ class DatabaseTest extends MockeryTestCase
             $returnValue->video_link = "https://www.youtube.com/fsda234";
         
     
-        $mock = \Mockery::mock('DB');        
+        /*$mock = \Mockery::mock('DB');        
         $mock->shouldReceive('get')
             ->with()
             ->once()
             ->andReturn($returnValue);
         
         $book = $mock->get();
+        var_dump($book);*/
+        
+        $mock = \Mockery::mock('DB');        
+        $mock->shouldReceive('table','get')
+            ->with($tableName)
+            ->once()
+            ->andReturn($returnValue);
+        
+        $book = $mock->table($tableName);
         var_dump($book);
         
+        $book2 = $mock->table($tableName)->get();
+        var_dump($book2);
         
         
         
