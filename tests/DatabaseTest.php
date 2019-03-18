@@ -4,6 +4,7 @@ namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Illuminate\Support\Facades\DB;
+//use DavideCasiraghi\ResponsiveGallery\Tests\MyDBFacade;
 
 use \Mockery\Adapter\Phpunit\MockeryTestCase;
 
@@ -20,7 +21,7 @@ class DatabaseTest extends MockeryTestCase
         //$table_name = config('random-quote.table_name');
         $tableName = 'photos';
         
-        $returnValue = new DB();
+        $returnValue = new MyDBFacade();
             $returnValue->file_name = "DSC_9470.jpg";
             $returnValue->description = "Photo description";
             $returnValue->alt_text = "Photo alt text";
@@ -36,17 +37,17 @@ class DatabaseTest extends MockeryTestCase
         $book = $mock->get();
         var_dump($book);*/
         
-        $mock = \Mockery::mock('DB');        
-        $mock->shouldReceive('table','get')
+        $mock = \Mockery::mock('MyDBFacade');        
+        $mock->shouldReceive('table')
             ->with($tableName)
             ->once()
             ->andReturn($returnValue);
         
-        $book = $mock->table($tableName);
-        var_dump($book);
+        $photos = $mock->table($tableName)->get();
+        var_dump($photos);
         
-        $book2 = $mock->table($tableName)->get();
-        var_dump($book2);
+        /*$book2 = $mock->table($tableName)->get();
+        var_dump($book2);*/
         
         
         

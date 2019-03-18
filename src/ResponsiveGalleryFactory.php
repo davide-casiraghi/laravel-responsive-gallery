@@ -267,25 +267,25 @@ class ResponsiveGalleryFactory
     public function getPhotoDatas($photoFileName)
     {
         
-        $table_name = config('random-quote.table_name');
-        $field_file_name = config('random-quote.field_filename');
-        $field_description = config('random-quote.field_description');
-        $field_alt_text = config('random-quote.field_alt_text');
-        $field_video_link = config('random-quote.field_video_link');
+        $table_name = config('responsive-gallery.table_name');
+        $field_file_name = config('responsive-gallery.field_filename');
+        $field_description = config('responsive-gallery.field_description');
+        $field_alt_text = config('responsive-gallery.field_alt_text');
+        $field_video_link = config('responsive-gallery.field_video_link');
 
+        $ret = DB::table($tableName)->keyBy($field_file_name);
         
-        $photoTableDatas = DB::table($tableName)->get();
-        
+        dd()
         /*$photoTableDatas = Cache::get('photo_datas', function () {
             return  DB::table($tableName)->get();
         });*/
-        
+        /*
         $singlePhotoDatas->contains($field_file_name, $photoFileName);
         
         $ret['file_name'] = $singlePhotoDatas->contains($field_file_name, $photoFileName);
         $ret['description'] = null;
         $ret['alt_text'] = null;
-        $ret['video_link'] = null;
+        $ret['video_link'] = null;*/
         
                         
 
