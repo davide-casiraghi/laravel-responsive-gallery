@@ -27,62 +27,35 @@
 			}
 		}
 		
-		/*
-		&[data-gutter="0"]{
-			.bricklayer-column{
-				padding: 0;
-				.box{
-					margin-bottom: 0px;
-				}
-			}
-		}
-		&[data-gutter="10"]{
-			.bricklayer-column{
-				padding: 0 5px;
-				.box{
-					margin-bottom: 10px;
-				}
-			}
-		}
-		&[data-gutter="20"]{
-			.bricklayer-column{
-				padding: 0 10px;
-				.box{
-					margin-bottom: 20px;
-				}
-			}
-		}
-		&[data-gutter="30"]{
-			.bricklayer-column{
-				padding: 0 15px;
-				.box{
-					margin-bottom: 30px;
-				}
-			}
-		}
-		&[data-gutter="40"]{
-			.bricklayer-column{
-				padding: 0 20px;
-				.box{
-					margin-bottom: 40px;
-				}
-			}
-		}
-		&[data-gutter="50"]{
-			.bricklayer-column{
-				padding: 0 25px;
-				.box{
-					margin-bottom: 50px;
-				}
-			}
-		}*/
-		
 	}
 
 	.box{
-		/*margin-bottom: 10px;*/
-		img{
-			width: 100%;
+		&.animated{
+			transition: transform 0.15s linear;
+			
+			&:hover{
+				transform: scale(1.04);
+				box-shadow: 0 2px 20px 2px rgba(0,0,0,.45);
+			}
+		}
+		a{
+			cursor: zoom-in;
+		    display: block;
+		    position: relative;
+			
+			img{
+				width: 100%;
+			}
+			
+			i {
+				&.fa-play-circle{
+				    position: absolute;
+				    top: calc(50% - 25px);
+				    left: calc(50% - 25px);
+				    color: hsla(0,0%,100%,.8);
+				    font-size: 50px;
+				}
+			}
 		}
 	}
 	
