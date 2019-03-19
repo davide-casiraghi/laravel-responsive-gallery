@@ -192,7 +192,7 @@ class ResponsiveGalleryFactory
 
             $ret .= "<div class='box ".$itemClass."'>";
             $ret .= "<a href='".$imageLink."' data-fancybox='images' data-caption='".$image['description']."'>";
-            $ret .= "<img src='".$image['thumb_path']."' />";
+            $ret .= "<img src='".$image['thumb_path']."' alt='".$image['alt']."'/>";
             $ret .= $videoPlayIcon;
             $ret .= '</a>';
             $ret .= '</div>';
