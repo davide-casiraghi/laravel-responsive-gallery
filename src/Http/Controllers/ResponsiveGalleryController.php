@@ -132,8 +132,9 @@
          * @param  \App\Country  $country
          * @return \Illuminate\Http\Response
          */
-        public function destroy(GalleryImage $galleryImage){
+        public function destroy($id){
 
+            $galleryImage = GalleryImage::find($id);
             $galleryImage->delete();
             
             return redirect()->route('responsive-gallery.index')
