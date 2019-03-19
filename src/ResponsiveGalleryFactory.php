@@ -310,7 +310,7 @@ class ResponsiveGalleryFactory
 
                     
                     $dbImageDatas = $this->getPhotoDatasFromDb();
-                    
+                    //dd($dbImageDatas);
                     // Create Images array [file_path, short_desc, long_desc]
                     $images = $this->createImagesArray($image_files, $image_data, $parameters['gallery_url'], $dbImageDatas);
 

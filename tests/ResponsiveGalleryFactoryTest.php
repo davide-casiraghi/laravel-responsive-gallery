@@ -108,9 +108,14 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $image_data = null;
         $gallery_url = __DIR__.'/test_images/';
 
+
+        $dbImageDatas = [
+            'IMG_1979.jpg' => new GalleryImage(),
+            'IMG_1980.jpg' => new GalleryImage(),
+        ];
+
         $gallery = new ResponsiveGalleryFactory();
-        //dd($gallery);
-        $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url);
+        $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url, $dbImageDatas);
 
         $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);
     }
