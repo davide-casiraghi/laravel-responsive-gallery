@@ -136,9 +136,14 @@ class ResponsiveGalleryFactory
         $ret = [];
 
         foreach ($image_files as $k => $image_file) {
+            
+            $dbImageDatas = $this->getPhotoDatasFromDb($image_file);
+            //dump($dbImageDatas);
+            
+            $ret[$k]['file_name'] = $image_file;
             $ret[$k]['file_path'] = $gallery_url.$image_file;
             $ret[$k]['thumb_path'] = $gallery_url.'thumb/'.$image_file;
-            $ret[$k]['description'] = $image_data[$image_file]['description'];
+            $ret[$k]['description'] = $dbImageDatas['description'];
             $ret[$k]['video_link'] = $image_data[$image_file]['video'];
         }
 
@@ -160,7 +165,6 @@ class ResponsiveGalleryFactory
     }
 
     /************************************************************************/
-
     /**
      *  Prepare the gallery HTML.
      *  @param array $images                        Images array [file_path, short_desc, long_desc]
@@ -180,7 +184,7 @@ class ResponsiveGalleryFactory
         $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'>";
 
         foreach ($images as $k => $image) {
-
+            //dd($image);
             // Get item link
             $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
             $videoPlayIcon = ($image['video_link'] == null) ? '' : "<i class='far fa-play-circle'></i>";
@@ -264,31 +268,56 @@ class ResponsiveGalleryFactory
      *  @param none
      *  @return array $ret - the config parapeters
      **/
-    public function getPhotoDatas($photoFileName)
+    public function getPhotoDatasFromDb($photoFileName)
     {
-        
         $table_name = config('responsive-gallery.table_name');
+        
+        $category_field_name = config('responsive-gallery.category_field_name');
+        $category_field_value = config('responsive-gallery.category_field_value');
+        
         $field_file_name = config('responsive-gallery.field_filename');
         $field_description = config('responsive-gallery.field_description');
         $field_alt_text = config('responsive-gallery.field_alt_text');
         $field_video_link = config('responsive-gallery.field_video_link');
 
-        $ret = DB::table($tableName)->keyBy($field_file_name);
+        //$aaa = DB::table($table_name)->get();
         
-        dd()
-        /*$photoTableDatas = Cache::get('photo_datas', function () {
-            return  DB::table($tableName)->get();
-        });*/
-        /*
-        $singlePhotoDatas->contains($field_file_name, $photoFileName);
+        //$aaa = $model::table($table_name)->get();
         
-        $ret['file_name'] = $singlePhotoDatas->contains($field_file_name, $photoFileName);
-        $ret['description'] = null;
-        $ret['alt_text'] = null;
-        $ret['video_link'] = null;*/
+        $model = \App\Post::class;
+        /*$aaa = $model::when(1, function ($query, $category_field_value) {
+                    return $query->where($category_field_name, $category_field_value);
+                })->get();*/
+                
+                /*$aaa = $model::where(function($query) use ($category_field_name, $category_field_value) {
+                       if ( ! empty($category_field_name)) {
+                           $query->where($category_field_name, '=', $category_field_value);
+                       }
+                   })->get();*/
+                
+        /*$aaa = $model::get();
+        $bb  = $aaa->where($field_file_name, $photoFileName);*/
         
-                        
-
+        
+        if ($category_field_name !== ''){
+            $photosDatas = $model::where($category_field_name, '=', $category_field_value)
+                    ->get()->keyBy($field_file_name);
+        }
+        else{
+            $photosDatas = $model::get()->keyBy($field_file_name);
+        }
+        
+        // if photo has datas return the datas
+            $ret = null;
+            if (!empty($photosDatas[$photoFileName])){
+                //dd($field_description);
+                //dd($photosDatas[$photoFileName]->$field_description);
+                
+                $ret['description'] = $photosDatas[$photoFileName]->$field_description;
+                //$ret['video_link'] = 
+                //$ret['alt'] = 
+            }
+        
         return $ret;
     }
 
