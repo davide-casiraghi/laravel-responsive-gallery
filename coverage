@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1553011391">
-  <project timestamp="1553011391">
+<coverage generated="1553019142">
+  <project timestamp="1553019142">
     <package name="DavideCasiraghi\ResponsiveGallery\Facades">
       <file name="/Users/davidecasiraghi/Documents/Sync/www/myJob/@github/@phpPackageDevelopment/laravel-responsive-gallery/src/Facades/ResponsiveGallery.php">
         <class name="DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery" namespace="DavideCasiraghi\ResponsiveGallery\Facades">

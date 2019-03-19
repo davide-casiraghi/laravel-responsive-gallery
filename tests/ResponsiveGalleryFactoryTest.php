@@ -25,6 +25,10 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $matches = $gallery->getGallerySnippetOccurrences($text);
 
         $this->assertContains('holiday_images/london', $matches[0]);
+        
+        $matches = $gallery->getGallerySnippetOccurrences("");
+        $this->assertSame(null,$matches);
+        
     }
 
     /** @test */
