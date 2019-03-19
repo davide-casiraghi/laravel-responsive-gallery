@@ -129,22 +129,28 @@ class ResponsiveGalleryFactory
      *  @param $gallery_url
      *  @return $ret    array with the images datas
      **/
-    public function createImagesArray($image_files, $image_data, $gallery_url)
+    public function createImagesArray($image_file_names, $image_data, $gallery_url, $dbImageDatas)
     {
-        sort($image_files);  // Order by image name
+    
+        sort($image_file_names);  // Order by image name
 
         $ret = [];
 
-        foreach ($image_files as $k => $image_file) {
-            $dbImageDatas = $this->getPhotoDatasFromDb($image_file);
+        foreach ($image_file_names as $k => $image_file_name) {
             //dump($dbImageDatas);
 
-            $ret[$k]['file_name'] = $image_file;
-            $ret[$k]['file_path'] = $gallery_url.$image_file;
-            $ret[$k]['thumb_path'] = $gallery_url.'thumb/'.$image_file;
-            $ret[$k]['description'] = $dbImageDatas['description'];
-            $ret[$k]['alt'] = $dbImageDatas['alt'];
-            $ret[$k]['video_link'] = $dbImageDatas['video_link'];
+            $ret[$k]['file_name'] = $image_file_name;
+            $ret[$k]['file_path'] = $gallery_url.$image_file_name;
+            $ret[$k]['thumb_path'] = $gallery_url.'thumb/'.$image_file_name;
+            $ret[$k]['description'] = "";
+            $ret[$k]['alt'] = "";
+            $ret[$k]['video_link'] = null;
+            
+            if (! empty($dbImageDatas[$image_file_name])) {
+                $ret[$k]['description'] = $dbImageDatas[$image_file_name]->description;
+                $ret[$k]['alt'] = $dbImageDatas[$image_file_name]->alt;
+                $ret[$k]['video_link'] = $dbImageDatas[$image_file_name]->video_link;
+            }
         }
 
         return $ret;
@@ -183,10 +189,10 @@ class ResponsiveGalleryFactory
 
         // The gallery HTML
         $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'>";
-
+        //dd($images);
         foreach ($images as $k => $image) {
             //dd($image);
-            // Get item link
+            // Get item link   
             $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
             $videoPlayIcon = ($image['video_link'] == null) ? '' : "<i class='far fa-play-circle'></i>";
 
@@ -270,19 +276,9 @@ class ResponsiveGalleryFactory
      *  @param none
      *  @return array $ret - the config parapeters
      **/
-    public function getPhotoDatasFromDb($photoFileName)
+    public function getPhotoDatasFromDb()
     {
-        
-        $photosDatas = GalleryImage::get()->keyBy('file_name');
-
-        // if photo has datas return the datas
-        $ret = null;
-        if (! empty($photosDatas[$photoFileName])) {
-            $ret['description'] = $photosDatas[$photoFileName]->description;
-            $ret['video_link'] = $photosDatas[$photoFileName]->video_link;
-            $ret['alt'] = $photosDatas[$photoFileName]->alt;
-        }
-
+        $ret = GalleryImage::get()->keyBy('file_name');
         return $ret;
     }
 
@@ -312,8 +308,11 @@ class ResponsiveGalleryFactory
                     // Generate thumbnails files
                     $this->generateThumbs($parameters['images_dir'], $parameters['thumbs_dir'], $parameters['thumbs_size'], $image_files);
 
+                    
+                    $dbImageDatas = $this->getPhotoDatasFromDb();
+                    
                     // Create Images array [file_path, short_desc, long_desc]
-                    $images = $this->createImagesArray($image_files, $image_data, $parameters['gallery_url']);
+                    $images = $this->createImagesArray($image_files, $image_data, $parameters['gallery_url'], $dbImageDatas);
 
                     // Prepare Gallery HTML
                     $galleryHtml = $this->prepareGallery($images, $parameters);
