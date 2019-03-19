@@ -25,7 +25,12 @@ class ResponsiveGalleryServiceProvider extends ServiceProvider
             ], 'migrations');
         }
         
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'php-responsive-quote');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-responsive-gallery');
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/laravel-responsive-gallery/')
+        ]);
+
+
 
     }
 
