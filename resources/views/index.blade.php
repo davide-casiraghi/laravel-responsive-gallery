@@ -1,17 +1,14 @@
+@extends('vendor.laravel-responsive-gallery.layout')
 
-
-Here is the gallery index view!
-:)
-
-{{--
-<blockquote class="quoteOfTheDay">
-    <div class="text">
-        <img class="start-quote" src="/vendor/responsive-quotes/assets/images/start-quote-teal.png" alt="Start Quote">
-        {{--<div class="start-quote">"</div>--}}
-         
-        <img class="end-quote" src="/vendor/responsive-quotes/assets/images/end-quote-teal.png" alt="End Quote">
-        {{--<div class="end-quote">"</div>--}}
+@section('content')
+    
+    <div class="row">
+        <div class="col-12 col-sm-6">
+            <h4>Galleries photos</h4>
+        </div>
+        <div class="col-12 col-sm-6 mt-4 mt-sm-0 text-right">
+            <a class="btn btn-success create-new" href="{{ route('responsive-gallery.create') }}">Add new photo datas</a>
+        </div>
     </div>
-    <cite>Martha Graham</cite>
-</blockquote>
---}}
+
+@endsection
