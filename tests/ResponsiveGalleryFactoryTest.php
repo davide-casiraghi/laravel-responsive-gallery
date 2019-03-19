@@ -108,7 +108,6 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $image_data = null;
         $gallery_url = __DIR__.'/test_images/';
 
-
         $dbImageDatas = [
             'IMG_1979.jpg' => new GalleryImage(),
             'IMG_1980.jpg' => new GalleryImage(),
