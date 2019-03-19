@@ -30,8 +30,6 @@ class ResponsiveGalleryServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views' => resource_path('views/vendor/laravel-responsive-gallery/')
         ]);
 
-
-
     }
 
     public function register()
