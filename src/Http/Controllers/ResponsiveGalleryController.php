@@ -1,71 +1,78 @@
-<?php 
-    namespace DavideCasiraghi\ResponsiveGallery\Http\Controllers;
-    use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
-    use DavideCasiraghi\ResponsiveGallery\GalleryImage;
+<?php
 
+namespace DavideCasiraghi\ResponsiveGallery\Http\Controllers;
+
+use Validator;
     use Illuminate\Http\Request;
-    use Validator;
+    use DavideCasiraghi\ResponsiveGallery\GalleryImage;
+    use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 
-    class ResponsiveGalleryController 
+    class ResponsiveGalleryController
     {
         public function __invoke()
         {
             //return ResponsiveGallery::getRandomQuote();
             $galleryImages = GalleryImage::orderBy('file_name')->paginate(20);
-            return view('vendor.laravel-responsive-gallery.index',compact('galleryImages'))
+
+            return view('vendor.laravel-responsive-gallery.index', compact('galleryImages'))
                             ->with('i', (request()->input('page', 1) - 1) * 20);
         }
 
         /***************************************************************************/
+
         /**
          * Display a listing of the resource.
          *
          * @return \Illuminate\Http\Response
          */
-        public function index(Request $request){    
-        
+        public function index(Request $request)
+        {
             $searchKeywords = $request->input('keywords');
 
-            if ($searchKeywords){
+            if ($searchKeywords) {
                 $galleryImages = GalleryImage::orderBy('file_name')
-                                    ->where('file_name', 'like', '%' . $request->input('keywords') . '%')
+                                    ->where('file_name', 'like', '%'.$request->input('keywords').'%')
+                                    ->paginate(20);
+            } else {
+                $galleryImages = GalleryImage::orderBy('file_name')
                                     ->paginate(20);
             }
-            else
-                $galleryImages = GalleryImage::orderBy('file_name')
-                                    ->paginate(20);
 
-            return view('vendor.laravel-responsive-gallery.index',compact('galleryImages'))
+            return view('vendor.laravel-responsive-gallery.index', compact('galleryImages'))
                             ->with('i', (request()->input('page', 1) - 1) * 20)
-                            ->with('searchKeywords',$searchKeywords);
+                            ->with('searchKeywords', $searchKeywords);
         }
 
         /***************************************************************************/
+
         /**
          * Show the form for creating a new resource.
          *
          * @return \Illuminate\Http\Response
          */
-        public function create(){
+        public function create()
+        {
             return view('vendor.laravel-responsive-gallery.create');
         }
 
         /***************************************************************************/
+
         /**
          * Store a newly created resource in storage.
          *
          * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
-        public function store(Request $request){
-            
+        public function store(Request $request)
+        {
+
             // Validate form datas
-                $validator = Validator::make($request->all(), [
+            $validator = Validator::make($request->all(), [
                     'file_name' => 'required',
                 ]);
-                if ($validator->fails()) {
-                    return back()->withErrors($validator)->withInput();
-                }
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
 
             $gallery_image = new GalleryImage();
             $gallery_image->file_name = $request->get('file_name');
@@ -80,31 +87,35 @@
         }
 
         /***************************************************************************/
+
         /**
          * Display the specified resource.
          *
          * @param  \App\Country  $country
          * @return \Illuminate\Http\Response
          */
-        public function show(GalleryImage $galleryImage){
-            return view('vendor.laravel-responsive-gallery.show',compact('galleryImage'));
+        public function show(GalleryImage $galleryImage)
+        {
+            return view('vendor.laravel-responsive-gallery.show', compact('galleryImage'));
         }
 
         /***************************************************************************/
+
         /**
          * Show the form for editing the specified resource.
          *
          * @param  \App\Country  $country
          * @return \Illuminate\Http\Response
          */
-        public function edit($id = null){
-            
+        public function edit($id = null)
+        {
             $galleryImage = GalleryImage::find($id);
-            
-            return view('vendor.laravel-responsive-gallery.edit',compact('galleryImage'));
+
+            return view('vendor.laravel-responsive-gallery.edit', compact('galleryImage'));
         }
 
         /***************************************************************************/
+
         /**
          * Update the specified resource in storage.
          *
@@ -112,11 +123,12 @@
          * @param  \App\Country  $country
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, $id){
+        public function update(Request $request, $id)
+        {
             request()->validate([
                 'file_name' => 'required',
             ]);
-            
+
             $galleryImage = GalleryImage::find($id);
 
             $galleryImage->update($request->all());
@@ -126,23 +138,19 @@
         }
 
         /***************************************************************************/
+
         /**
          * Remove the specified resource from storage.
          *
          * @param  \App\Country  $country
          * @return \Illuminate\Http\Response
          */
-        public function destroy($id){
-
+        public function destroy($id)
+        {
             $galleryImage = GalleryImage::find($id);
             $galleryImage->delete();
-            
+
             return redirect()->route('responsive-gallery.index')
                             ->with('success', 'Image datas deleted succesfully');
         }
-
-
-
-
-
     }
