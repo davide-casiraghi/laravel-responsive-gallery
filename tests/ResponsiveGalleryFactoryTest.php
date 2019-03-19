@@ -3,13 +3,11 @@
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use PHPUnit\Framework\TestCase;
-use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
-
 use DavideCasiraghi\ResponsiveGallery\GalleryImage;
+use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
 class ResponsiveGalleryFactoryTest extends TestCase
 {
-    
     /** @test */
     public function it_returns_file_extension()
     {
@@ -107,7 +105,6 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $image_files = ['test_image_1.jpg'];
         $image_data = null;
         $gallery_url = __DIR__.'/test_images/';
-
 
         $dbImageDatas = [
             'IMG_1979.jpg' => new GalleryImage(),
