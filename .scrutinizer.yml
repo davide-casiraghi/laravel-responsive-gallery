@@ -29,8 +29,8 @@ build:
                     - js-scrutinizer-run
     tests:
         override:
-          - command: './vendor/bin/phpunit --coverage-clover=coverage'
+          - command: './vendor/bin/phpunit --coverage-clover=build/logs/clover.xml'
             coverage:
-              file: logs/clover.xml   # <- Set this to where we find the coverage data.
+              file: build/logs/clover.xml   # <- Set this to where we find the coverage data.
                                           #    The path is relative to the current directory.
               format: php-clover
