@@ -75,7 +75,7 @@
 
             $gallery_image->save();
 
-            return redirect()->route('vendor.laravel-responsive-gallery.index')
+            return redirect()->route('responsive-gallery.index')
                             ->with('success', 'Image datas added succesfully');
         }
 
@@ -116,7 +116,7 @@
 
             $galleryImage->update($request->all());
 
-            return redirect()->route('vendor.laravel-responsive-gallery.index')
+            return redirect()->route('responsive-gallery.index')
                             ->with('success', 'Image datas updated succesfully');
         }
 
@@ -131,7 +131,7 @@
 
             $galleryImage->delete();
             
-            return redirect()->route('vendor.laravel-responsive-gallery.index')
+            return redirect()->route('responsive-gallery.index')
                             ->with('success', 'Image datas deleted succesfully');
         }
 
