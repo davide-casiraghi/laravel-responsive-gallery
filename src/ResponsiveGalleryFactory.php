@@ -272,28 +272,7 @@ class ResponsiveGalleryFactory
      **/
     public function getPhotoDatasFromDb($photoFileName)
     {
-        /*$table_name = config('responsive-gallery.table_name');
-
-        $category_field_name = config('responsive-gallery.category_field_name');
-        $category_field_value = config('responsive-gallery.category_field_value');
-
-        $field_file_name = config('responsive-gallery.field_filename');
-        $field_description = config('responsive-gallery.field_description');
-        $field_alt_text = config('responsive-gallery.field_alt_text');
-        $field_video_link = config('responsive-gallery.field_video_link');
-
-        //$aaa = DB::table($table_name)->get();
-        //$aaa = $model::table($table_name)->get();
-
-        $model = \App\Post::class;
-        if ($category_field_name !== ''){
-            $photosDatas = $model::where($category_field_name, '=', $category_field_value)
-                    ->get()->keyBy($field_file_name);
-        }
-        else{
-            $photosDatas = $model::get()->keyBy($field_file_name);
-        }*/
-
+        
         $photosDatas = GalleryImage::get()->keyBy('file_name');
 
         // if photo has datas return the datas

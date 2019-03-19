@@ -5,8 +5,11 @@ namespace DavideCasiraghi\ResponsiveGallery\Tests;
 use PHPUnit\Framework\TestCase;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
+use DavideCasiraghi\ResponsiveGallery\GalleryImage;
+
 class ResponsiveGalleryFactoryTest extends TestCase
 {
+    
     /** @test */
     public function it_returns_file_extension()
     {
@@ -106,6 +109,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $gallery_url = __DIR__.'/test_images/';
 
         $gallery = new ResponsiveGalleryFactory();
+        dd($gallery);
         $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url);
 
         $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);
