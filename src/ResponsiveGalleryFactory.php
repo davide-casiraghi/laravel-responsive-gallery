@@ -136,10 +136,9 @@ class ResponsiveGalleryFactory
         $ret = [];
 
         foreach ($image_files as $k => $image_file) {
-            
             $dbImageDatas = $this->getPhotoDatasFromDb($image_file);
             //dump($dbImageDatas);
-            
+
             $ret[$k]['file_name'] = $image_file;
             $ret[$k]['file_path'] = $gallery_url.$image_file;
             $ret[$k]['thumb_path'] = $gallery_url.'thumb/'.$image_file;
@@ -166,6 +165,7 @@ class ResponsiveGalleryFactory
     }
 
     /************************************************************************/
+
     /**
      *  Prepare the gallery HTML.
      *  @param array $images                        Images array [file_path, short_desc, long_desc]
@@ -262,20 +262,21 @@ class ResponsiveGalleryFactory
             return;
         }
     }
-    
+
     /************************************************************************/
+
     /**
-     *  Retrieve the datas from the package config file (published and edited by the user)
+     *  Retrieve the datas from the package config file (published and edited by the user).
      *  @param none
      *  @return array $ret - the config parapeters
      **/
     public function getPhotoDatasFromDb($photoFileName)
     {
         /*$table_name = config('responsive-gallery.table_name');
-        
+
         $category_field_name = config('responsive-gallery.category_field_name');
         $category_field_value = config('responsive-gallery.category_field_value');
-        
+
         $field_file_name = config('responsive-gallery.field_filename');
         $field_description = config('responsive-gallery.field_description');
         $field_alt_text = config('responsive-gallery.field_alt_text');
@@ -283,7 +284,7 @@ class ResponsiveGalleryFactory
 
         //$aaa = DB::table($table_name)->get();
         //$aaa = $model::table($table_name)->get();
-        
+
         $model = \App\Post::class;
         if ($category_field_name !== ''){
             $photosDatas = $model::where($category_field_name, '=', $category_field_value)
@@ -292,21 +293,22 @@ class ResponsiveGalleryFactory
         else{
             $photosDatas = $model::get()->keyBy($field_file_name);
         }*/
-        
+
         $photosDatas = GalleryImage::get()->keyBy('file_name');
-        
+
         // if photo has datas return the datas
-            $ret = null;
-            if (!empty($photosDatas[$photoFileName])){
-                $ret['description'] = $photosDatas[$photoFileName]->description;
-                $ret['video_link'] = $photosDatas[$photoFileName]->video_link;
-                $ret['alt'] = $photosDatas[$photoFileName]->alt;
-            }
-        
+        $ret = null;
+        if (! empty($photosDatas[$photoFileName])) {
+            $ret['description'] = $photosDatas[$photoFileName]->description;
+            $ret['video_link'] = $photosDatas[$photoFileName]->video_link;
+            $ret['alt'] = $photosDatas[$photoFileName]->alt;
+        }
+
         return $ret;
     }
 
     /************************************************************************/
+
     /**
      *  Return the post body with the gallery HTML instead of the found snippet.
      *  @param array $file_name        the file name
