@@ -144,7 +144,8 @@ class ResponsiveGalleryFactory
             $ret[$k]['file_path'] = $gallery_url.$image_file;
             $ret[$k]['thumb_path'] = $gallery_url.'thumb/'.$image_file;
             $ret[$k]['description'] = $dbImageDatas['description'];
-            $ret[$k]['video_link'] = $image_data[$image_file]['video'];
+            $ret[$k]['alt'] = $dbImageDatas['alt'];
+            $ret[$k]['video_link'] = $dbImageDatas['video_link'];
         }
 
         return $ret;
@@ -297,10 +298,6 @@ class ResponsiveGalleryFactory
         // if photo has datas return the datas
             $ret = null;
             if (!empty($photosDatas[$photoFileName])){
-                //dd($photosDatas[$photoFileName]->file_name);
-                //dd($field_description);
-                //dd($photosDatas[$photoFileName]->$field_description);
-                
                 $ret['description'] = $photosDatas[$photoFileName]->description;
                 $ret['video_link'] = $photosDatas[$photoFileName]->video_link;
                 $ret['alt'] = $photosDatas[$photoFileName]->alt;
