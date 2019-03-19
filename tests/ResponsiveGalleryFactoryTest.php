@@ -3,13 +3,11 @@
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use PHPUnit\Framework\TestCase;
-use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
-
 use DavideCasiraghi\ResponsiveGallery\GalleryImage;
+use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
 class ResponsiveGalleryFactoryTest extends TestCase
 {
-    
     /** @test */
     public function it_returns_file_extension()
     {
