@@ -270,7 +270,7 @@ class ResponsiveGalleryFactory
      **/
     public function getPhotoDatasFromDb($photoFileName)
     {
-        $table_name = config('responsive-gallery.table_name');
+        /*$table_name = config('responsive-gallery.table_name');
         
         $category_field_name = config('responsive-gallery.category_field_name');
         $category_field_value = config('responsive-gallery.category_field_value');
@@ -281,41 +281,29 @@ class ResponsiveGalleryFactory
         $field_video_link = config('responsive-gallery.field_video_link');
 
         //$aaa = DB::table($table_name)->get();
-        
         //$aaa = $model::table($table_name)->get();
         
         $model = \App\Post::class;
-        /*$aaa = $model::when(1, function ($query, $category_field_value) {
-                    return $query->where($category_field_name, $category_field_value);
-                })->get();*/
-                
-                /*$aaa = $model::where(function($query) use ($category_field_name, $category_field_value) {
-                       if ( ! empty($category_field_name)) {
-                           $query->where($category_field_name, '=', $category_field_value);
-                       }
-                   })->get();*/
-                
-        /*$aaa = $model::get();
-        $bb  = $aaa->where($field_file_name, $photoFileName);*/
-        
-        
         if ($category_field_name !== ''){
             $photosDatas = $model::where($category_field_name, '=', $category_field_value)
                     ->get()->keyBy($field_file_name);
         }
         else{
             $photosDatas = $model::get()->keyBy($field_file_name);
-        }
+        }*/
+        
+        $photosDatas = GalleryImage::get()->keyBy('file_name');
         
         // if photo has datas return the datas
             $ret = null;
             if (!empty($photosDatas[$photoFileName])){
+                //dd($photosDatas[$photoFileName]->file_name);
                 //dd($field_description);
                 //dd($photosDatas[$photoFileName]->$field_description);
                 
-                $ret['description'] = $photosDatas[$photoFileName]->$field_description;
-                //$ret['video_link'] = 
-                //$ret['alt'] = 
+                $ret['description'] = $photosDatas[$photoFileName]->description;
+                $ret['video_link'] = $photosDatas[$photoFileName]->video_link;
+                $ret['alt'] = $photosDatas[$photoFileName]->alt;
             }
         
         return $ret;
