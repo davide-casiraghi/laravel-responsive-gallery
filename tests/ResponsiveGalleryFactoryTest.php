@@ -109,7 +109,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $gallery_url = __DIR__.'/test_images/';
 
         $gallery = new ResponsiveGalleryFactory();
-        dd($gallery);
+        //dd($gallery);
         $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url);
 
         $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);
@@ -140,7 +140,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $galleryHtml = $gallery->prepareGallery($images, $parameters);
         //var_dump($parameters);
         $this->assertStringContainsString(
-            "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' /></a></div></div>",
+            "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' alt='".$images[0]['alt']."'/></a></div></div>",
             $galleryHtml);
     }
 }
