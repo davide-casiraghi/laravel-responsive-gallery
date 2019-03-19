@@ -3,7 +3,7 @@
 [![StyleCI](https://styleci.io/repos/175794655/shield?style=flat-square)](https://styleci.io/repos/175794655)
 [![GitHub last commit](https://img.shields.io/github/last-commit/davide-casiraghi/laravel-responsive-gallery.svg)](https://github.com/davide-casiraghi/laravel-responsive-gallery) 
 [![Quality Score](https://img.shields.io/scrutinizer/g/davide-casiraghi/laravel-responsive-gallery.svg?style=flat-square)](https://scrutinizer-ci.com/g/davide-casiraghi/laravel-responsive-gallery)
-[![Coverage Status](https://coveralls.io/repos/github/davide-casiraghi/laravel-responsive-gallery/badge.svg?branch=master)](https://coveralls.io/github/davide-casiraghi/laravel-responsive-gallery)
+[![Coverage Status](https://scrutinizer-ci.com/g/davide-casiraghi/laravel-responsive-gallery/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/davide-casiraghi/laravel-responsive-gallery/)
 
 
 
