@@ -18,12 +18,15 @@ checks:
         fix_doc_comments: true
 
 build:
-  nodes:
-    analysis:
-      tests:
-        override:
-            - php-scrutinizer-run
-            - js-scrutinizer-run
+    environment:
+        php:
+            version: 7.2
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
+                    - js-scrutinizer-run
     coverage:
       tests:
         override:
