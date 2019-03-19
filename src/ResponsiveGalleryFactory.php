@@ -2,8 +2,6 @@
 
 namespace DavideCasiraghi\ResponsiveGallery;
 
-use Illuminate\Support\Facades\DB;
-
 class ResponsiveGalleryFactory
 {
     /************************************************************************/
@@ -131,7 +129,6 @@ class ResponsiveGalleryFactory
      **/
     public function createImagesArray($image_file_names, $image_data, $gallery_url, $dbImageDatas)
     {
-    
         sort($image_file_names);  // Order by image name
 
         $ret = [];
@@ -142,10 +139,10 @@ class ResponsiveGalleryFactory
             $ret[$k]['file_name'] = $image_file_name;
             $ret[$k]['file_path'] = $gallery_url.$image_file_name;
             $ret[$k]['thumb_path'] = $gallery_url.'thumb/'.$image_file_name;
-            $ret[$k]['description'] = "";
-            $ret[$k]['alt'] = "";
+            $ret[$k]['description'] = '';
+            $ret[$k]['alt'] = '';
             $ret[$k]['video_link'] = null;
-            
+
             if (! empty($dbImageDatas[$image_file_name])) {
                 $ret[$k]['description'] = $dbImageDatas[$image_file_name]->description;
                 $ret[$k]['alt'] = $dbImageDatas[$image_file_name]->alt;
@@ -192,7 +189,7 @@ class ResponsiveGalleryFactory
         //dd($images);
         foreach ($images as $k => $image) {
             //dd($image);
-            // Get item link   
+            // Get item link
             $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
             $videoPlayIcon = ($image['video_link'] == null) ? '' : "<i class='far fa-play-circle'></i>";
 
@@ -279,6 +276,7 @@ class ResponsiveGalleryFactory
     public function getPhotoDatasFromDb()
     {
         $ret = GalleryImage::get()->keyBy('file_name');
+
         return $ret;
     }
 
@@ -308,7 +306,6 @@ class ResponsiveGalleryFactory
                     // Generate thumbnails files
                     $this->generateThumbs($parameters['images_dir'], $parameters['thumbs_dir'], $parameters['thumbs_size'], $image_files);
 
-                    
                     $dbImageDatas = $this->getPhotoDatasFromDb();
                     //dd($dbImageDatas);
                     // Create Images array [file_path, short_desc, long_desc]
