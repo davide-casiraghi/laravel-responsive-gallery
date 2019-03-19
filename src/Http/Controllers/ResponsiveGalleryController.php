@@ -1,15 +1,21 @@
 <?php 
     namespace DavideCasiraghi\ResponsiveGallery\Http\Controllers;
     use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
-    
-    use App\GalleryImage;
+    use DavideCasiraghi\ResponsiveGallery\GalleryImage;
 
     use Illuminate\Http\Request;
     use Validator;
 
-    class ResponsiveGalleryController extends Controller
+    class ResponsiveGalleryController 
     {
-    
+        public function __invoke()
+        {
+            //return ResponsiveGallery::getRandomQuote();
+            $galleryImages = GalleryImage::orderBy('file_name')->paginate(20);
+            return view('vendor.laravel-responsive-gallery.index',compact('galleryImages'))
+                            ->with('i', (request()->input('page', 1) - 1) * 20);
+        }
+
         /***************************************************************************/
         /**
          * Display a listing of the resource.

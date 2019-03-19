@@ -4,6 +4,9 @@ namespace DavideCasiraghi\ResponsiveGallery;
 
 use Illuminate\Support\ServiceProvider;
 
+use DavideCasiraghi\ResponsiveGallery\Http\Controllers\ResponsiveGalleryController;
+use Illuminate\Support\Facades\Route;
+
 class ResponsiveGalleryServiceProvider extends ServiceProvider
 {
     public function boot()
@@ -31,6 +34,7 @@ class ResponsiveGalleryServiceProvider extends ServiceProvider
         ]);
         
         Route::get('responsive-gallery', ResponsiveGalleryController::class);
+        // Route::get('responsive-gallery', 'ResponsiveGalleryController@index');
 
 
     }
@@ -38,5 +42,11 @@ class ResponsiveGalleryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/responsive-gallery.php', 'responsive-gallery');
+        
+        $this->app->bind('gallery-index', function(){
+           return new ResponsiveGalleryFactory();
+       });
+
+    
     }
 }
