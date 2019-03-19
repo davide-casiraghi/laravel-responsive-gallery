@@ -97,7 +97,10 @@
          * @param  \App\Country  $country
          * @return \Illuminate\Http\Response
          */
-        public function edit(GalleryImage $galleryImage){
+        public function edit($id = null){
+            
+            $galleryImage = GalleryImage::find($id);
+            
             return view('vendor.laravel-responsive-gallery.edit',compact('galleryImage'));
         }
 
@@ -109,10 +112,12 @@
          * @param  \App\Country  $country
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, GalleryImage $galleryImage){
+        public function update(Request $request, $id){
             request()->validate([
                 'file_name' => 'required',
             ]);
+            
+            $galleryImage = GalleryImage::find($id);
 
             $galleryImage->update($request->all());
 

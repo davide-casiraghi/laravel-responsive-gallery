@@ -8,7 +8,6 @@ class ResponsiveGallery extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        //return 'php-responsive-quote';
         return 'gallery-index';
     }
 }
