@@ -120,6 +120,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
             'thumb_path' => __DIR__.'/test_images/thumb/test_image_1.jpg',
             'description' => null,
             'video_link' => null,
+            'alt' => 'alt text',
         ];
 
         $parameters = [
