@@ -140,7 +140,7 @@ class ResponsiveGalleryFactory
             $ret[$k]['description'] = '';
             $ret[$k]['alt'] = '';
             $ret[$k]['video_link'] = null;
-
+            
             if (! empty($dbImageDatas[$image_file_name])) {
                 $ret[$k]['description'] = $dbImageDatas[$image_file_name]->description;
                 $ret[$k]['alt'] = $dbImageDatas[$image_file_name]->alt;

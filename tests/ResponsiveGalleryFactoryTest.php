@@ -189,7 +189,6 @@ class ResponsiveGalleryFactoryTest extends TestCase
     public function it_creates_images_array()
     {
         $image_files = ['test_image_1.jpg'];
-        $image_data = null;
         $gallery_url = __DIR__.'/test_images/';
 
         $dbImageDatas = [
@@ -198,7 +197,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         ];
 
         $gallery = new ResponsiveGalleryFactory();
-        $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url, $dbImageDatas);
+        $images = $gallery->createImagesArray($image_files, $gallery_url, $dbImageDatas);
 
         $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);
     }
