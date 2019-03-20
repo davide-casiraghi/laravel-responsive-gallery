@@ -1,6 +1,7 @@
 <?php
 
-namespace DavideCasiraghi\ResponsiveGallery\Tests;
+namespace Orchestra\Testbench\Tests\Databases;
+//namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Artisan;
@@ -10,12 +11,13 @@ use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
 
+
 class LaravelTest extends TestCase
 {
     /**
      * Create the tables this model needs for testing.
      */
-    public static function setUpBeforeClass() : void
+    /*public static function setUpBeforeClass() : void
     {
         $capsule = new Capsule;
         $capsule->addConnection([
@@ -48,14 +50,48 @@ class LaravelTest extends TestCase
         //Artisan::call('migrate', ['--database' => ':memory:']);
         //$this->artisan('migrate', ['--database' => ':memory:'])->run();
     }
-
+    */
+    
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
+    }
+    
     /**
      * Setup the test environment.
      */
     protected function setUp(): void
     {
         parent::setUp();
-        Artisan::call('migrate', ['--database' => 'testing']);
+        //Artisan::call('migrate', ['--database' => 'testing']);
+        // To run migrations that are only used for testing purposes
+        //$this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        
+        $this->loadLaravelMigrations(['--database' => 'testbench']);
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        //$this->artisan('migrate', ['--database' => 'testbench'])->run();
+        
+        /*$this->loadMigrationsFrom([
+            '--database' => 'testbench',
+            '--path' => realpath(__DIR__ . '/database/migrations'),
+        ]);*/
+        
+        
+        
+        //$tables = \DB::select('SHOW TABLES');
+        //dd($tables);
     }
 
     protected function getPackageProviders($app)
@@ -71,6 +107,24 @@ class LaravelTest extends TestCase
             'ResponsiveGallery' => ResponsiveGallery::class, // facade called ResponsiveQuote and the name of the facade class
         ];
     }
+    
+    /** @test */
+    /*public function it_runs_the_migrations()
+    {        
+       GalleryImage::insert([
+            'file_name' => 'DSC_9470.jpg',
+            'description' => 'Photo description',
+            'alt_text' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ]);
+        
+        $image = GalleryImage::where('file_name', '=', 'DSC_9470.jpg')->first();
+        
+        $this->assertEquals('DSC_9470.jpg', $image->file_name);
+        
+        dd("sdfsd");
+   }*/
+
 
     /** @test */
     /*public function the_console_command_returns_a_quote()
