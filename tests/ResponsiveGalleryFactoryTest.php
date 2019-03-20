@@ -158,6 +158,24 @@ class ResponsiveGalleryFactoryTest extends TestCase
             $galleryHtml);
     }
     
+    /** @test */
+    public function it_gets_photos_from_db()
+    {
+        $returnValue = new GalleryImage();
+        $returnValue->file_name = "DSC_9470.jpg";
+        $returnValue->description = "Photo description";
+        $returnValue->alt_text = "Photo alt text";
+        $returnValue->video_link = "https://www.youtube.com/fsda234";
+        
+        $mock = \Mockery::mock('GalleryImage');   
+        $mock->shouldReceive('get')
+            ->andReturn($returnValue);
+        
+        dd($returnValue->keyBy('file_name'));
+        
+        $aa = $mock->get();
+        dd($aa);
+    }
     
     /** @test */
     public function it_gets_gallery()
