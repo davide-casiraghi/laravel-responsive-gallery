@@ -182,7 +182,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
     }*/
     
     /** @test */
-    public function it_gets_gallery()
+    /*public function it_gets_gallery()
     {
         $postBody = 'Lorem ipsum {# gallery src=[holiday_images] column_width=[400] gutter=[2] #} sid amet {# gallery src=[holiday_images/paris] column_width=[400] gutter=[2] #}';
         $publicPath = __DIR__.'/test_images';
@@ -191,8 +191,5 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $postBodyWithGallery = $gallery->getGallery($postBody, $publicPath);
 
         //$this->assertStringContainsString('Image directory not found', $postBodyWithGallery);
-        
-        
-        
-    }
+    }*/
 }
