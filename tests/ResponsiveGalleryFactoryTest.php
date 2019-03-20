@@ -3,7 +3,7 @@
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use PHPUnit\Framework\TestCase;
-use DavideCasiraghi\ResponsiveGallery\GalleryImage;
+use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
 //use DavideCasiraghi\ResponsiveGallery\Tests\Models\GalleryImage;

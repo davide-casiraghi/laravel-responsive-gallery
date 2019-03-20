@@ -1,6 +1,6 @@
 <?php
 
-namespace DavideCasiraghi\ResponsiveGallery;
+namespace DavideCasiraghi\ResponsiveGallery\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

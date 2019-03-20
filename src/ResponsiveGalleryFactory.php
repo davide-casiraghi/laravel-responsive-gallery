@@ -2,6 +2,8 @@
 
 namespace DavideCasiraghi\ResponsiveGallery;
 
+use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
+
 class ResponsiveGalleryFactory
 {
     /************************************************************************/

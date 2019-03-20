@@ -3,9 +3,9 @@
 namespace DavideCasiraghi\ResponsiveGallery\Http\Controllers;
 
 use Validator;
-    use Illuminate\Http\Request;
-    use DavideCasiraghi\ResponsiveGallery\GalleryImage;
-    use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
+use Illuminate\Http\Request;
+use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
+use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 
     class ResponsiveGalleryController
     {
