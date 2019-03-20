@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 use DavideCasiraghi\ResponsiveGallery\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
+//use DavideCasiraghi\ResponsiveGallery\Tests\Models\GalleryImage;
+
 class ResponsiveGalleryFactoryTest extends TestCase
 {
     /** @test */
@@ -155,4 +157,35 @@ class ResponsiveGalleryFactoryTest extends TestCase
             "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' alt='".$images[0]['alt']."'/></a></div></div>",
             $galleryHtml);
     }
+    
+    
+    
+    
+    
+    /** @test */
+    /*public function it_gets_photos_from_db()
+    {
+        $returnValue = new GalleryImage();
+            $returnValue->file_name = "DSC_9470.jpg";
+            $returnValue->description = "Photo description";
+            $returnValue->alt_text = "Photo alt text";
+            $returnValue->video_link = "https://www.youtube.com/fsda234";
+        
+        $mock = \Mockery::mock('GalleryImage');   
+        $mock->shouldReceive('get')
+            ->andReturn($returnValue);
+        
+        //$aa = $mock->get();
+        //dd($aa);
+        
+        
+        $gallery = new ResponsiveGalleryFactory();
+        $dbImageDatas = $gallery->getPhotoDatasFromDb($mock);
+        dd($dbImageDatas);
+    }
+    */
+
+    
+    
+    
 }
