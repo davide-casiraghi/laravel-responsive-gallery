@@ -21,8 +21,6 @@ class ResponsiveGalleryFactoryTest extends TestCase
     public static function setUpBeforeClass() : void 
     {
         $capsule = new Capsule;
-
-
         $capsule->addConnection([
             'driver' => 'sqlite',
             'database' => ':memory:',
@@ -50,28 +48,6 @@ class ResponsiveGalleryFactoryTest extends TestCase
             'alt_text' => 'Photo alt text',
             'video_link' => 'https://www.youtube.com/fsda234',
         ]);
-        
-        
-    
-        
-        /*
-        try {
-            DB::connection()->getPdo();
-        } catch(\Exception $e) {
-            die($e->getMessage());
-        }
-
-        Schema::create('gallery_images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('file_name')->unique();
-            $table->text('description')->nullable();
-            $table->string('alt')->nullable();
-            $table->string('video_link')->nullable();
-            $table->timestamps();
-        });
-        
-        
-        */
     }
     
     
