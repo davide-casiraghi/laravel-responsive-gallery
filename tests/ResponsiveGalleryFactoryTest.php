@@ -45,7 +45,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         //Model::unguard();
         
         GalleryImage::create([
-            'file_name' => 'DSC_9470',
+            'file_name' => 'DSC_9470.jpg',
             'description' => 'Photo description',
             'alt_text' => 'Photo alt text',
             'video_link' => 'https://www.youtube.com/fsda234',
@@ -232,30 +232,12 @@ class ResponsiveGalleryFactoryTest extends TestCase
             $galleryHtml);
     }
     
-    
-    
-    
-    
     /** @test */
     public function it_gets_photos_from_db()
     {
-        
-        $aa = GalleryImage::get();
-        dd($aa);
-        /*$returnValue = new GalleryImage();
-            $returnValue->file_name = "DSC_9470.jpg";
-            $returnValue->description = "Photo description";
-            $returnValue->alt_text = "Photo alt text";
-            $returnValue->video_link = "https://www.youtube.com/fsda234";
-        
-         if (GalleryImage::insert($returnValue)){
-             dd("yes");
-         }
-         else{
-             dd("no");
-         }*/
-        
-    
+         $gallery = new ResponsiveGalleryFactory();
+         $dbImageDatas = $gallery->getPhotoDatasFromDb();
+         $this->assertStringContainsString($dbImageDatas['DSC_9470.jpg']->description, "Photo description");
     }
     
 
