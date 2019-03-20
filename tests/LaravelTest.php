@@ -37,8 +37,9 @@ class LaravelTest extends TestCase
 
     /* @test */
     /*errore 500 perchè non trova la tabella gallery_images*/
-    public function the_route_can_be_accessed(){
-        
+    public function the_route_can_be_accessed()
+    {
+
         /*ResponsiveGallery::shouldReceive('getRandomQuote')
             ->once()
             ->andReturn('some joke');*/
