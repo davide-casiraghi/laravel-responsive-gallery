@@ -171,10 +171,12 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $mock->shouldReceive('get')
             ->andReturn($returnValue);
         
-        dd($returnValue->keyBy('file_name'));
+        $gallery = new ResponsiveGalleryFactory();
+        $dbImageDatas = $gallery->getPhotoDatasFromDb();
+        dd($dbImageDatas);
         
-        $aa = $mock->get();
-        dd($aa);
+        //$aa = $mock->get();
+        //dd($aa);
     }
     
     /** @test */
