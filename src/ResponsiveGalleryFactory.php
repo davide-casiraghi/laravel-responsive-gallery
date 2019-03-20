@@ -10,16 +10,13 @@ class ResponsiveGalleryFactory
 
     /**
      *  Returns the plugin parameters.
-     *  @param array $matches       result from the regular expression on the string from the article
-     *  @return array $ret          the array containing the parameters
+     *  @param array $matches       Result from the regular expression on the string from the article
+     *  @param string $publicPath   
+     *  @return array $ret          The array containing the parameters
      **/
     public static function getGalleryParameters($matches, $publicPath)
     {
         $ret = [];
-
-        // Get Paths
-        $sitePath = '/';
-        $siteUrl = $publicPath;
 
         // Get activation string parameters (from article)
         $ret['token'] = $matches[0];
@@ -49,9 +46,10 @@ class ResponsiveGalleryFactory
      *  @param array $src               path of the original image
      *  @param array $dest              path of the generated thumbnail
      *  @param array $desired_width     width of the thumbnail
-     *  @return create a file
+     *  @param array $desired_height    height of the thumbnail
+     *  @return void
      **/
-    public function generate_single_thumb_file($src, $dest, $desired_width, $desired_height)
+    public function generate_single_thumb_file($src, $dest, $desired_width, $desired_height) : void
     {
         // Read the source image
         $source_image = imagecreatefromjpeg($src);
@@ -85,13 +83,13 @@ class ResponsiveGalleryFactory
 
     /**
      *  Generate all the thumbnails of the gallery.
-     *  @param string $images_dir        images dir on the server
-     *  @param string $thumbs_dir        thumb dir on the server
-     *  @param string $$thumbs_size
-     *  @param array $image_files
-     *  @return generate thumbnail files
+     *  @param string $images_dir      Images dir on the server
+     *  @param string $thumbs_dir      Thumb dir on the server
+     *  @param string $thumbs_size
+     *  @param array  $image_files
+     *  @return void
      **/
-    public function generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files)
+    public function generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files) : void
     {
         // Thumbnails size
         $thumbs_width = $thumbs_size['width'];
@@ -111,7 +109,6 @@ class ResponsiveGalleryFactory
                 if (! file_exists($thumbnail_image)) {
                     $extension = self::get_file_extension($thumbnail_image);
                     if ($extension) {
-                        //echo $images_dir." ".$file." ".$thumbnail_image." ".$thumbs_width;
                         $this->generate_single_thumb_file($images_dir.$file, $thumbnail_image, $thumbs_width, $thumbs_height);
                     }
                 }
@@ -123,9 +120,10 @@ class ResponsiveGalleryFactory
 
     /**
      *  Create images array.
-     *  @param array $image_files           array with all the image names
-     *  @param $gallery_url
-     *  @return $ret    array with the images datas
+     *  @param array        $image_file_names  Array with all the image names
+     *  @param string       $gallery_url
+     *  @param GalleryImage $dbImageDatas
+     *  @return array       $ret               Array with the images datas
      **/
     public function createImagesArray($image_file_names, $gallery_url, $dbImageDatas)
     {
@@ -155,8 +153,8 @@ class ResponsiveGalleryFactory
 
     /**
      *  Get images file names array.
-     *  @param $images_dir           the images dir on the server
-     *  @return array $ret           array containing all the images file names
+     *  @param  string $images_dir   The images dir on the server
+     *  @return array  $ret          All the images file names
      **/
     public function getImageFiles($images_dir)
     {
@@ -168,17 +166,14 @@ class ResponsiveGalleryFactory
     /************************************************************************/
 
     /**
-     *  Prepare the gallery HTML.
-     *  @param array $images                        Images array [file_path, short_desc, long_desc]
-     *  @param array $bootstrapDeviceImageWidth     array that contain the sizes of the images
-     *                                              for the four kind of bootrap devices classes ()
-     *                                              xs (phones), sm (tablets), md (desktops), and lg (larger desktops)
-     *  @param ****array $desired_width     width of the thumbnail
-     *  @return string $ret             the HTML to print on screen
+     *  Prepare the gallery HTML
+     *  @param array $images       Images array [file_path, short_desc, long_desc]
+     *  @param array $parameters      
+     *  @return string $ret        The HTML to print on screen
      **/
     public function prepareGallery($images, $parameters)
     {
-        // Animate box on hover
+        // Animate image box on hover
         $itemClass = 'animated';
 
         // The gallery HTML
@@ -204,9 +199,9 @@ class ResponsiveGalleryFactory
 
     /**
      *  Returns files from dir.
-     *  @param string $images_dir                 The images directory
-     *  @param array $exts     the file types (actually doesn't work the thumb with png, it's to study why)
-     *  @return array $files             the files array
+     *  @param string $images_dir  The images directory
+     *  @param  array $exts        The file types (actually doesn't work the thumb with png, it's to study why)
+     *  @return array $files       The files array
      **/
     public function get_files($images_dir, $exts = ['jpg'])
     {
@@ -229,20 +224,21 @@ class ResponsiveGalleryFactory
 
     /**
      *  Returns a file's extension.
-     *  @param string $file_name        the file name
-     *  @return string                  the extension
+     *  @param  string  $file_name   The file name
+     *  @return string  $ret         The extension without dot
      **/
     public static function get_file_extension($file_name)
     {
-        return substr(strrchr($file_name, '.'), 1);
+        $ret = substr(strrchr($file_name, '.'), 1);
+        return $ret;
     }
 
     /************************************************************************/
 
     /**
      *  Find the gallery snippet occurances in the text.
-     *  @param array $text        the text where to find the gallery snippets
-     *  @return array $ret        the matches
+     *  @param array $text     The text where to find the gallery snippets
+     *  @return array $ret     The matches
      **/
     public function getGallerySnippetOccurrences($text)
     {
@@ -264,13 +260,12 @@ class ResponsiveGalleryFactory
 
     /**
      *  Retrieve the datas from the package config file (published and edited by the user).
-     *  @param none
      *  @return array $ret - the config parapeters
      **/
     public function getPhotoDatasFromDb()
     {
         $ret = GalleryImage::get()->keyBy('file_name');
-        //dd($ret);
+        
         return $ret;
     }
 
@@ -278,8 +273,9 @@ class ResponsiveGalleryFactory
 
     /**
      *  Return the post body with the gallery HTML instead of the found snippet.
-     *  @param array $file_name        the file name
-     *  @return array $ret             the extension
+     *  @param array  $postBody       The text name
+     *  @param string $publicPath     
+     *  @return array $ret            $postBody with the HTML Galleries
      **/
     public function getGallery($postBody, $publicPath)
     {
