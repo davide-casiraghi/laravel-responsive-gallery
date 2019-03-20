@@ -25,10 +25,9 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $matches = $gallery->getGallerySnippetOccurrences($text);
 
         $this->assertContains('holiday_images/london', $matches[0]);
-        
-        $matches = $gallery->getGallerySnippetOccurrences("");
-        $this->assertSame(null,$matches);
-        
+
+        $matches = $gallery->getGallerySnippetOccurrences('');
+        $this->assertSame(null, $matches);
     }
 
     /** @test */
@@ -79,7 +78,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
 
         $filePath = __DIR__.'/test_images/test_image_vertical.jpg';
         $thumbPath = __DIR__.'/test_images/thumb/test_image_vertical.jpg';
-        
+
         $gallery->generate_single_thumb_file($filePath, $thumbPath, $thumbWidth, $thumbHeight);
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
         $this->assertContains('test_image_1.jpg', $imageThumbNamesArray);
@@ -94,21 +93,20 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $thumbs_size['height'] = 40;
         $image_files = ['test_image_1.jpg'];
         $gallery = new ResponsiveGalleryFactory();
-        
+
         $gallery->generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files);
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
         $this->assertContains('test_image_1.jpg', $imageThumbNamesArray);
-        
+
         // Delete thumb dir before second test
-            if ( is_dir($thumbs_dir)) {
-                array_map('unlink', glob("$thumbs_dir/*.*"));
-                rmdir($thumbs_dir);
-            }
-        
+        if (is_dir($thumbs_dir)) {
+            array_map('unlink', glob("$thumbs_dir/*.*"));
+            rmdir($thumbs_dir);
+        }
+
         $gallery->generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files);
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
         $this->assertContains('test_image_1.jpg', $imageThumbNamesArray);
-        
     }
 
     /** @test */
@@ -125,8 +123,8 @@ class ResponsiveGalleryFactoryTest extends TestCase
 
         $gallery = new ResponsiveGalleryFactory();
         $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url, $dbImageDatas);
-        
-        $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);    
+
+        $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);
     }
 
     /** @test */
@@ -157,20 +155,16 @@ class ResponsiveGalleryFactoryTest extends TestCase
             "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' alt='".$images[0]['alt']."'/></a></div></div>",
             $galleryHtml);
     }
-    
-    
+
     /** @test */
     public function it_gets_gallery()
     {
         $postBody = 'Lorem ipsum {# gallery src=[holiday_images] column_width=[400] gutter=[2] #} sid amet {# gallery src=[holiday_images/paris] column_width=[400] gutter=[2] #}';
         $publicPath = __DIR__.'/test_images';
-        
+
         $gallery = new ResponsiveGalleryFactory();
         $postBodyWithGallery = $gallery->getGallery($postBody, $publicPath);
 
         $this->assertStringContainsString('Image directory not found', $postBodyWithGallery);
-        
-        
-        
     }
 }
