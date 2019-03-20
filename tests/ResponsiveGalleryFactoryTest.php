@@ -6,10 +6,8 @@ use PHPUnit\Framework\TestCase;
 use DavideCasiraghi\ResponsiveGallery\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
-
-
 class ResponsiveGalleryFactoryTest extends TestCase
-{    
+{
     /** @test */
     public function it_returns_file_extension()
     {
@@ -157,6 +155,4 @@ class ResponsiveGalleryFactoryTest extends TestCase
             "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' alt='".$images[0]['alt']."'/></a></div></div>",
             $galleryHtml);
     }
-    
-    
 }

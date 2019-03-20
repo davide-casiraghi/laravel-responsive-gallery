@@ -285,16 +285,15 @@ class ResponsiveGalleryFactory
 
         foreach ($matches as $key => $single_gallery_matches) {
             $parameters = self::getGalleryParameters($single_gallery_matches, $publicPath);
-        
+
             if (is_dir($parameters['images_dir'])) {
                 // Get images file name array
                 $image_files = $this->getImageFiles($parameters['images_dir']);
-            
-                if (! empty($image_files)) {
 
+                if (! empty($image_files)) {
                     $this->generateThumbs($parameters['images_dir'], $parameters['thumbs_dir'], $parameters['thumbs_size'], $image_files);
                     $dbImageDatas = $this->getPhotoDatasFromDb();
-                    
+
                     // Create Images array [file_path, short_desc, long_desc]
                     $images = $this->createImagesArray($image_files, $parameters['gallery_url'], $dbImageDatas);
 
