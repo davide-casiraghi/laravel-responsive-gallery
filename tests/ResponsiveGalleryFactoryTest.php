@@ -240,6 +240,18 @@ class ResponsiveGalleryFactoryTest extends TestCase
          $this->assertStringContainsString($dbImageDatas['DSC_9470.jpg']->description, "Photo description");
     }
     
+    /** @test */
+   public function it_gets_gallery()
+   {
+       $postBody = 'Lorem ipsum {# gallery src=[holiday_images] column_width=[400] gutter=[2] #} sid amet {# gallery src=[holiday_images/paris] column_width=[400] gutter=[2] #}';
+       $publicPath = __DIR__.'/test_images';
+
+       $gallery = new ResponsiveGalleryFactory();
+       $postBodyWithGallery = $gallery->getGallery($postBody, $publicPath);
+
+       $this->assertStringContainsString('Image directory not found', $postBodyWithGallery);
+   }
+
 
     
     
