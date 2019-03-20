@@ -11,7 +11,7 @@ class ResponsiveGalleryFactory
      *  @param array $matches       result from the regular expression on the string from the article
      *  @return array $ret          the array containing the parameters
      **/
-    public static function getGalleryParameters($matches, $publicPath)
+    static public function getGalleryParameters($matches, $publicPath)
     {
         $ret = [];
 
@@ -91,31 +91,30 @@ class ResponsiveGalleryFactory
      **/
     public function generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files)
     {
-
         // Thumbnails size
-        $thumbs_width = $thumbs_size['width'];
-        $thumbs_height = $thumbs_size['height'];
+            $thumbs_width = $thumbs_size['width'];
+            $thumbs_height = $thumbs_size['height'];
 
         //  Create thumbs dir
-        if (! is_dir($thumbs_dir)) {
-            mkdir($thumbs_dir);
-        }
+            if (! is_dir($thumbs_dir)) {
+                mkdir($thumbs_dir);
+            }
 
         // Generate missing thumbs
-        if (count($image_files)) {
-            $index = 0;
-            foreach ($image_files as $index=>$file) {
-                $index++;
-                $thumbnail_image = $thumbs_dir.$file;
-                if (! file_exists($thumbnail_image)) {
-                    $extension = $this->get_file_extension($thumbnail_image);
-                    if ($extension) {
-                        //echo $images_dir." ".$file." ".$thumbnail_image." ".$thumbs_width;
-                        $this->generate_single_thumb_file($images_dir.$file, $thumbnail_image, $thumbs_width, $thumbs_height);
+            if (count($image_files)) {
+                $index = 0;
+                foreach ($image_files as $index=>$file) {
+                    $index++;
+                    $thumbnail_image = $thumbs_dir.$file;
+                    if (! file_exists($thumbnail_image)) {
+                        $extension = self::get_file_extension($thumbnail_image);
+                        if ($extension) {
+                            //echo $images_dir." ".$file." ".$thumbnail_image." ".$thumbs_width;
+                            $this->generate_single_thumb_file($images_dir.$file, $thumbnail_image, $thumbs_width, $thumbs_height);
+                        }
                     }
                 }
             }
-        }
     }
 
     /************************************************************************/
@@ -134,8 +133,6 @@ class ResponsiveGalleryFactory
         $ret = [];
 
         foreach ($image_file_names as $k => $image_file_name) {
-            //dump($dbImageDatas);
-
             $ret[$k]['file_name'] = $image_file_name;
             $ret[$k]['file_path'] = $gallery_url.$image_file_name;
             $ret[$k]['thumb_path'] = $gallery_url.'thumb/'.$image_file_name;
@@ -163,7 +160,6 @@ class ResponsiveGalleryFactory
     public function getImageFiles($images_dir)
     {
         $ret = $this->get_files($images_dir);
-
         return $ret;
     }
 
@@ -180,15 +176,12 @@ class ResponsiveGalleryFactory
      **/
     public function prepareGallery($images, $parameters)
     {
-        //dd($parameters);
-        // Animate item on hover
+        // Animate box on hover
         $itemClass = 'animated';
 
         // The gallery HTML
         $ret = "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'>";
-        //dd($images);
         foreach ($images as $k => $image) {
-            //dd($image);
             // Get item link
             $imageLink = ($image['video_link'] == null) ? $image['file_path'] : $image['video_link'];
             $videoPlayIcon = ($image['video_link'] == null) ? '' : "<i class='far fa-play-circle'></i>";
@@ -200,7 +193,6 @@ class ResponsiveGalleryFactory
             $ret .= '</a>';
             $ret .= '</div>';
         }
-
         $ret .= '</div>';
 
         return $ret;
@@ -238,7 +230,7 @@ class ResponsiveGalleryFactory
      *  @param string $file_name        the file name
      *  @return string                  the extension
      **/
-    public static function get_file_extension($file_name)
+    static public function get_file_extension($file_name)
     {
         return substr(strrchr($file_name, '.'), 1);
     }
@@ -292,7 +284,7 @@ class ResponsiveGalleryFactory
         $matches = $this->getGallerySnippetOccurrences($postBody);
         
         foreach ($matches as $key => $single_gallery_matches) {
-            $parameters = $this->getGalleryParameters($single_gallery_matches, $publicPath);
+            $parameters = self::getGalleryParameters($single_gallery_matches, $publicPath);
             //dd($parameters);
             if (is_dir($parameters['images_dir'])) {
                 // Get images file name array

@@ -93,13 +93,22 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $thumbs_size['width'] = 40;
         $thumbs_size['height'] = 40;
         $image_files = ['test_image_1.jpg'];
-
         $gallery = new ResponsiveGalleryFactory();
+        
         $gallery->generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files);
-
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
-
         $this->assertContains('test_image_1.jpg', $imageThumbNamesArray);
+        
+        // Delete thumb dir before second test
+            if ( is_dir($thumbs_dir)) {
+                array_map('unlink', glob("$thumbs_dir/*.*"));
+                rmdir($thumbs_dir);
+            }
+        
+        $gallery->generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files);
+        $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
+        $this->assertContains('test_image_1.jpg', $imageThumbNamesArray);
+        
     }
 
     /** @test */
@@ -110,14 +119,14 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $gallery_url = __DIR__.'/test_images/';
 
         $dbImageDatas = [
-            'IMG_1979.jpg' => new GalleryImage(),
+            'test_image_1.jpg' => new GalleryImage(),
             'IMG_1980.jpg' => new GalleryImage(),
         ];
 
         $gallery = new ResponsiveGalleryFactory();
         $images = $gallery->createImagesArray($image_files, $image_data, $gallery_url, $dbImageDatas);
-
-        $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);
+        
+        $this->assertStringContainsString('test_image_1.jpg', $images[0]['file_path']);    
     }
 
     /** @test */
