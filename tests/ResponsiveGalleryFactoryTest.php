@@ -67,10 +67,9 @@ class ResponsiveGalleryFactoryTest extends TestCase
     {
         $filePath = __DIR__.'/test_images/test_image_1.jpg';
         $thumbPath = __DIR__.'/test_images/thumb/test_image_1.jpg';
+        $thumbs_dir = __DIR__.'/test_images/thumb/';
         $thumbWidth = 300;
         $thumbHeight = 200;
-
-        $thumbs_dir = __DIR__.'/test_images/thumb/';
 
         $gallery = new ResponsiveGalleryFactory();
 
@@ -78,9 +77,9 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
         $this->assertContains('test_image_1.jpg', $imageThumbNamesArray);
 
-        $thumbWidth = 200;
-        $thumbHeight = 300;
-
+        $filePath = __DIR__.'/test_images/test_image_vertical.jpg';
+        $thumbPath = __DIR__.'/test_images/thumb/test_image_vertical.jpg';
+        
         $gallery->generate_single_thumb_file($filePath, $thumbPath, $thumbWidth, $thumbHeight);
         $imageThumbNamesArray = $gallery->getImageFiles($thumbs_dir);
         $this->assertContains('test_image_1.jpg', $imageThumbNamesArray);

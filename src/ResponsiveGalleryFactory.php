@@ -276,7 +276,7 @@ class ResponsiveGalleryFactory
     public function getPhotoDatasFromDb()
     {
         $ret = GalleryImage::get()->keyBy('file_name');
-
+        //dd($ret);
         return $ret;
     }
 
@@ -290,7 +290,7 @@ class ResponsiveGalleryFactory
     public function getGallery($postBody, $publicPath)
     {
         $matches = $this->getGallerySnippetOccurrences($postBody);
-
+        
         foreach ($matches as $key => $single_gallery_matches) {
             $parameters = $this->getGalleryParameters($single_gallery_matches, $publicPath);
             //dd($parameters);
