@@ -2,25 +2,20 @@
 
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
+use Orchestra\Testbench\TestCase;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
-
-use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
-
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Schema\Blueprint;
-
-use Illuminate\Support\Facades\Artisan;
-
-use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
 {
     /**
      * Create the tables this model needs for testing.
      */
-    public static function setUpBeforeClass() : void 
+    public static function setUpBeforeClass() : void
     {
         $capsule = new Capsule;
         $capsule->addConnection([
@@ -31,7 +26,7 @@ class LaravelTest extends TestCase
 
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
-        
+
         Capsule::schema()->create('gallery_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('file_name')->unique();
@@ -40,20 +35,20 @@ class LaravelTest extends TestCase
             $table->string('video_link')->nullable();
             $table->timestamps();
         });
-        
+
         //Model::unguard();
-        
+
         GalleryImage::create([
             'file_name' => 'DSC_9470.jpg',
             'description' => 'Photo description',
             'alt_text' => 'Photo alt text',
             'video_link' => 'https://www.youtube.com/fsda234',
         ]);
-        
+
         //Artisan::call('migrate', ['--database' => ':memory:']);
         //$this->artisan('migrate', ['--database' => ':memory:'])->run();
     }
-    
+
     /**
      * Setup the test environment.
      */
@@ -62,7 +57,7 @@ class LaravelTest extends TestCase
         parent::setUp();
         Artisan::call('migrate', ['--database' => 'testing']);
     }
-    
+
     protected function getPackageProviders($app)
     {
         return [
@@ -76,35 +71,33 @@ class LaravelTest extends TestCase
             'ResponsiveGallery' => ResponsiveGallery::class, // facade called ResponsiveQuote and the name of the facade class
         ];
     }
-    
+
     /** @test */
     /*public function the_console_command_returns_a_quote()
     {
         $this->withoutMockingConsoleOutput();
-        
+
         PhpResponsiveQuote::shouldReceive('getRandomQuote')
             ->once()
             ->andReturn('some joke');
-        
+
         $this->artisan('php-responsive-quote');
         $output = Artisan::output();
         $this->assertSame('some joke'.PHP_EOL,$output);
     }*/
-    
-    /* @test */      
+
+    /* @test */
     public function the_route_can_be_accessed()
     {
         /*$body = 'Etiam aliquet orci tortor';
         $publicPath = '/aaaa/bbb/';
-            
+
         ResponsiveGallery::shouldReceive('getGallery')
             ->once()
             ->with($body,$publicPath)
             ->andReturn('some joke');*/
-            //->andReturn(true);
-            
-            
-            
+        //->andReturn(true);
+
         //dd(GalleryImage::get());
         /*ResponsiveGallery::shouldReceive('getRandomQuote')
             ->once()
@@ -115,7 +108,6 @@ class LaravelTest extends TestCase
             // ->assertViewHas('joke')
              //->assertViewHas('joke','some joke')
              ->assertStatus(500);
-            //dd($aa);
-             
+        //dd($aa);
     }
 }
