@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
-use Illuminate\Support\Facades\Artisan;
+//use Illuminate\Support\Facades\Artisan;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
@@ -28,7 +28,6 @@ class ResponsiveGalleryFactoryTest extends TestCase
         ]);
 
         $capsule->setAsGlobal();
-
         $capsule->bootEloquent();
         
         Capsule::schema()->create('gallery_images', function (Blueprint $table) {
