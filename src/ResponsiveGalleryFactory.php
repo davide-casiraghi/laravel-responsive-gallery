@@ -122,11 +122,10 @@ class ResponsiveGalleryFactory
     /**
      *  Create images array.
      *  @param array $image_files           array with all the image names
-     *  @param $image_data
      *  @param $gallery_url
      *  @return $ret    array with the images datas
      **/
-    public function createImagesArray($image_file_names, $image_data, $gallery_url, $dbImageDatas)
+    public function createImagesArray($image_file_names, $gallery_url, $dbImageDatas)
     {
         sort($image_file_names);  // Order by image name
 
@@ -285,23 +284,18 @@ class ResponsiveGalleryFactory
         
         foreach ($matches as $key => $single_gallery_matches) {
             $parameters = self::getGalleryParameters($single_gallery_matches, $publicPath);
-            //dd($parameters);
+        
             if (is_dir($parameters['images_dir'])) {
                 // Get images file name array
                 $image_files = $this->getImageFiles($parameters['images_dir']);
-                //sort($image_files,SORT_STRING);
-
+            
                 if (! empty($image_files)) {
-                    // Get images data from excel
-                    //$image_data = $this->getImgDataFromExcel($parameters['images_dir']);
-                    $image_data = null;
-                    // Generate thumbnails files
-                    $this->generateThumbs($parameters['images_dir'], $parameters['thumbs_dir'], $parameters['thumbs_size'], $image_files);
 
+                    $this->generateThumbs($parameters['images_dir'], $parameters['thumbs_dir'], $parameters['thumbs_size'], $image_files);
                     $dbImageDatas = $this->getPhotoDatasFromDb();
-                    //dd($dbImageDatas);
+                    
                     // Create Images array [file_path, short_desc, long_desc]
-                    $images = $this->createImagesArray($image_files, $image_data, $parameters['gallery_url'], $dbImageDatas);
+                    $images = $this->createImagesArray($image_files, $parameters['gallery_url'], $dbImageDatas);
 
                     // Prepare Gallery HTML
                     $galleryHtml = $this->prepareGallery($images, $parameters);
