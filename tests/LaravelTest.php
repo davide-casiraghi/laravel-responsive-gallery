@@ -2,9 +2,9 @@
 
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
-use Orchestra\Testbench\TestCase;
 use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
+
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
 
 use Illuminate\Support\Facades\Artisan;
+
+use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
 {
@@ -92,6 +94,17 @@ class LaravelTest extends TestCase
     /* @test */      
     public function the_route_can_be_accessed()
     {
+        /*$body = 'Etiam aliquet orci tortor';
+        $publicPath = '/aaaa/bbb/';
+            
+        ResponsiveGallery::shouldReceive('getGallery')
+            ->once()
+            ->with($body,$publicPath)
+            ->andReturn('some joke');*/
+            //->andReturn(true);
+            
+            
+            
         //dd(GalleryImage::get());
         /*ResponsiveGallery::shouldReceive('getRandomQuote')
             ->once()
