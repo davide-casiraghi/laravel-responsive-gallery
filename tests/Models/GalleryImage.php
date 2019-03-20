@@ -1,4 +1,5 @@
 <?php
+
 namespace DavideCasiraghi\ResponsiveGallery\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
