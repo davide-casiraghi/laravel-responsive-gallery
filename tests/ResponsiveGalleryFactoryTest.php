@@ -3,13 +3,12 @@
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Capsule\Manager as Capsule;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
-
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Schema\Blueprint;
 
 //use DavideCasiraghi\ResponsiveGallery\Tests\Models\GalleryImage;
 
@@ -18,10 +17,9 @@ class ResponsiveGalleryFactoryTest extends TestCase
     /**
      * Create the tables this model needs for testing.
      */
-    public static function setUpBeforeClass() : void 
+    public static function setUpBeforeClass() : void
     {
         $capsule = new Capsule;
-
 
         $capsule->addConnection([
             'driver' => 'sqlite',
@@ -32,7 +30,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         $capsule->setAsGlobal();
 
         $capsule->bootEloquent();
-        
+
         Capsule::schema()->create('gallery_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('file_name')->unique();
@@ -41,19 +39,16 @@ class ResponsiveGalleryFactoryTest extends TestCase
             $table->string('video_link')->nullable();
             $table->timestamps();
         });
-        
+
         //Model::unguard();
-        
+
         GalleryImage::create([
             'file_name' => 'DSC_9470.jpg',
             'description' => 'Photo description',
             'alt_text' => 'Photo alt text',
             'video_link' => 'https://www.youtube.com/fsda234',
         ]);
-        
-        
-    
-        
+
         /*
         try {
             DB::connection()->getPdo();
@@ -69,12 +64,11 @@ class ResponsiveGalleryFactoryTest extends TestCase
             $table->string('video_link')->nullable();
             $table->timestamps();
         });
-        
-        
+
+
         */
     }
-    
-    
+
     /**
      * Setup the test environment.
      */
@@ -83,7 +77,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
         parent::setUp();
         Artisan::call('migrate', ['--database' => 'testing']);
     }*/
-    
+
     /** @test */
     public function it_returns_file_extension()
     {
@@ -230,29 +224,24 @@ class ResponsiveGalleryFactoryTest extends TestCase
             "<div class='responsiveGallery bricklayer' id='my-bricklayer' data-column-width='".$parameters['column_width']."' data-gutter='".$parameters['gutter']."'><div class='box animated'><a href='".$images[0]['file_path']."' data-fancybox='images' data-caption=''><img src='".$images[0]['thumb_path']."' alt='".$images[0]['alt']."'/></a></div></div>",
             $galleryHtml);
     }
-    
+
     /** @test */
     public function it_gets_photos_from_db()
     {
-         $gallery = new ResponsiveGalleryFactory();
-         $dbImageDatas = $gallery->getPhotoDatasFromDb();
-         $this->assertStringContainsString($dbImageDatas['DSC_9470.jpg']->description, "Photo description");
+        $gallery = new ResponsiveGalleryFactory();
+        $dbImageDatas = $gallery->getPhotoDatasFromDb();
+        $this->assertStringContainsString($dbImageDatas['DSC_9470.jpg']->description, 'Photo description');
     }
-    
+
     /** @test */
-   public function it_gets_gallery()
-   {
-       $postBody = 'Lorem ipsum {# gallery src=[holiday_images] column_width=[400] gutter=[2] #} sid amet {# gallery src=[holiday_images/paris] column_width=[400] gutter=[2] #}';
-       $publicPath = __DIR__.'/test_images';
+    public function it_gets_gallery()
+    {
+        $postBody = 'Lorem ipsum {# gallery src=[holiday_images] column_width=[400] gutter=[2] #} sid amet {# gallery src=[holiday_images/paris] column_width=[400] gutter=[2] #}';
+        $publicPath = __DIR__.'/test_images';
 
-       $gallery = new ResponsiveGalleryFactory();
-       $postBodyWithGallery = $gallery->getGallery($postBody, $publicPath);
+        $gallery = new ResponsiveGalleryFactory();
+        $postBodyWithGallery = $gallery->getGallery($postBody, $publicPath);
 
-       $this->assertStringContainsString('Image directory not found', $postBodyWithGallery);
-   }
-
-
-    
-    
-    
+        $this->assertStringContainsString('Image directory not found', $postBodyWithGallery);
+    }
 }
