@@ -11,7 +11,7 @@ class ResponsiveGalleryFactory
      *  @param array $matches       result from the regular expression on the string from the article
      *  @return array $ret          the array containing the parameters
      **/
-    static public function getGalleryParameters($matches, $publicPath)
+    public static function getGalleryParameters($matches, $publicPath)
     {
         $ret = [];
 
@@ -92,29 +92,29 @@ class ResponsiveGalleryFactory
     public function generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files)
     {
         // Thumbnails size
-            $thumbs_width = $thumbs_size['width'];
-            $thumbs_height = $thumbs_size['height'];
+        $thumbs_width = $thumbs_size['width'];
+        $thumbs_height = $thumbs_size['height'];
 
         //  Create thumbs dir
-            if (! is_dir($thumbs_dir)) {
-                mkdir($thumbs_dir);
-            }
+        if (! is_dir($thumbs_dir)) {
+            mkdir($thumbs_dir);
+        }
 
         // Generate missing thumbs
-            if (count($image_files)) {
-                $index = 0;
-                foreach ($image_files as $index=>$file) {
-                    $index++;
-                    $thumbnail_image = $thumbs_dir.$file;
-                    if (! file_exists($thumbnail_image)) {
-                        $extension = self::get_file_extension($thumbnail_image);
-                        if ($extension) {
-                            //echo $images_dir." ".$file." ".$thumbnail_image." ".$thumbs_width;
-                            $this->generate_single_thumb_file($images_dir.$file, $thumbnail_image, $thumbs_width, $thumbs_height);
-                        }
+        if (count($image_files)) {
+            $index = 0;
+            foreach ($image_files as $index=>$file) {
+                $index++;
+                $thumbnail_image = $thumbs_dir.$file;
+                if (! file_exists($thumbnail_image)) {
+                    $extension = self::get_file_extension($thumbnail_image);
+                    if ($extension) {
+                        //echo $images_dir." ".$file." ".$thumbnail_image." ".$thumbs_width;
+                        $this->generate_single_thumb_file($images_dir.$file, $thumbnail_image, $thumbs_width, $thumbs_height);
                     }
                 }
             }
+        }
     }
 
     /************************************************************************/
@@ -159,6 +159,7 @@ class ResponsiveGalleryFactory
     public function getImageFiles($images_dir)
     {
         $ret = $this->get_files($images_dir);
+
         return $ret;
     }
 
@@ -229,7 +230,7 @@ class ResponsiveGalleryFactory
      *  @param string $file_name        the file name
      *  @return string                  the extension
      **/
-    static public function get_file_extension($file_name)
+    public static function get_file_extension($file_name)
     {
         return substr(strrchr($file_name, '.'), 1);
     }
@@ -281,7 +282,7 @@ class ResponsiveGalleryFactory
     public function getGallery($postBody, $publicPath)
     {
         $matches = $this->getGallerySnippetOccurrences($postBody);
-        
+
         foreach ($matches as $key => $single_gallery_matches) {
             $parameters = self::getGalleryParameters($single_gallery_matches, $publicPath);
         
