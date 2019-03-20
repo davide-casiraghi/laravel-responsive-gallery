@@ -1,11 +1,10 @@
-<?php 
+<?php
 
 namespace Davidecasiraghi\ResponsiveGallery\Tests;
 
-use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider; 
-use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
-
 use Orchestra\Testbench\TestCase;
+use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
+use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
 
 class LaravelTest extends TestCase
 {
@@ -15,27 +14,28 @@ class LaravelTest extends TestCase
     protected function setUp() :void
     {
         parent::setUp();
-        
+
         //To run migrations that are only used for testing purposes and not part of your package, add the following to your base test class:
-            $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
-        
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
         // and other test setup steps you need to perform
     }
+
     protected function getPackageProviders($app)
     {
         return [
-            ResponsiveGalleryServiceProvider::class
+            ResponsiveGalleryServiceProvider::class,
         ];
     }
-    
+
     protected function getPackageAliases($app)
     {
         return [
-            'ResponsiveGallery' => ResponsiveGallery::class // facade called ResponsiveQuote and the name of the facade class
+            'ResponsiveGallery' => ResponsiveGallery::class, // facade called ResponsiveQuote and the name of the facade class
         ];
     }
-    
-    /** @test */
+
+    /* @test */
     /*errore 500 perchè non trova la tabella gallery_images*/
     public function the_route_can_be_accessed(){
         
