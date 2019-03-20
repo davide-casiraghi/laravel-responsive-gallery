@@ -27,5 +27,7 @@
     </logging>
     <php>
         <env name="DB_CONNECTION" value="testing"/>
+        <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <env name="APP_NAME" value="Testapp"/>
     </php>
 </phpunit>
