@@ -1,7 +1,8 @@
 <?php
-namespace Orchestra\Testbench\Tests\Databases;
-use Orchestra\Testbench\TestCase;
 
+namespace Orchestra\Testbench\Tests\Databases;
+
+use Orchestra\Testbench\TestCase;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
 
 class MigrateDatabaseTest extends TestCase
@@ -14,6 +15,7 @@ class MigrateDatabaseTest extends TestCase
         parent::setUp();
         $this->artisan('migrate', ['--database' => 'testing']);
     }
+
     /**
      * Define environment setup.
      *
@@ -25,6 +27,7 @@ class MigrateDatabaseTest extends TestCase
     {
         $app['config']->set('database.default', 'testing');
     }
+
     /**
      * Get package providers.  At a minimum this is the package being tested, but also
      * would include packages upon which our package depends, e.g. Cartalyst/Sentry
@@ -42,6 +45,7 @@ class MigrateDatabaseTest extends TestCase
             ResponsiveGalleryServiceProvider::class,
         ];
     }
+
     /**
      * Get package aliases.  In a normal app environment these would be added to
      * the 'aliases' array in the config/app.php file.  If your package exposes an
@@ -59,12 +63,13 @@ class MigrateDatabaseTest extends TestCase
             //'YourPackage' => 'YourProject\YourPackage\Facades\YourPackage',
         ];
     }
-    /** @test */
+
+    /* @test */
     /*public function it_runs_the_migrations()
     {
         $galleryImages = \DB::table('gallery_images')->where('id', '=', 1)->first();
         $this->assertEquals('aaa', $galleryImages->email);
-        
+
         $columns = \Schema::getColumnListing('gallery_images');
         $this->assertEquals([
             'file_name',
