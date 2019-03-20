@@ -6,10 +6,84 @@ use PHPUnit\Framework\TestCase;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Schema\Blueprint;
+
 //use DavideCasiraghi\ResponsiveGallery\Tests\Models\GalleryImage;
 
 class ResponsiveGalleryFactoryTest extends TestCase
 {
+    /**
+     * Create the tables this model needs for testing.
+     */
+    public static function setUpBeforeClass() : void 
+    {
+        $capsule = new Capsule;
+
+
+        $capsule->addConnection([
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
+
+        $capsule->setAsGlobal();
+
+        $capsule->bootEloquent();
+        
+        Capsule::schema()->create('gallery_images', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('file_name')->unique();
+            $table->text('description')->nullable();
+            $table->string('alt')->nullable();
+            $table->string('video_link')->nullable();
+            $table->timestamps();
+        });
+        
+        //Model::unguard();
+        
+        GalleryImage::create([
+            'file_name' => 'DSC_9470',
+            'description' => 'Photo description',
+            'alt_text' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ]);
+        
+        
+    
+        
+        /*
+        try {
+            DB::connection()->getPdo();
+        } catch(\Exception $e) {
+            die($e->getMessage());
+        }
+
+        Schema::create('gallery_images', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('file_name')->unique();
+            $table->text('description')->nullable();
+            $table->string('alt')->nullable();
+            $table->string('video_link')->nullable();
+            $table->timestamps();
+        });
+        
+        
+        */
+    }
+    
+    
+    /**
+     * Setup the test environment.
+     */
+    /*protected function setUp(): void
+    {
+        parent::setUp();
+        Artisan::call('migrate', ['--database' => 'testing']);
+    }*/
+    
     /** @test */
     public function it_returns_file_extension()
     {
@@ -163,27 +237,27 @@ class ResponsiveGalleryFactoryTest extends TestCase
     
     
     /** @test */
-    /*public function it_gets_photos_from_db()
+    public function it_gets_photos_from_db()
     {
-        $returnValue = new GalleryImage();
+        
+        $aa = GalleryImage::get();
+        dd($aa);
+        /*$returnValue = new GalleryImage();
             $returnValue->file_name = "DSC_9470.jpg";
             $returnValue->description = "Photo description";
             $returnValue->alt_text = "Photo alt text";
             $returnValue->video_link = "https://www.youtube.com/fsda234";
         
-        $mock = \Mockery::mock('GalleryImage');   
-        $mock->shouldReceive('get')
-            ->andReturn($returnValue);
+         if (GalleryImage::insert($returnValue)){
+             dd("yes");
+         }
+         else{
+             dd("no");
+         }*/
         
-        //$aa = $mock->get();
-        //dd($aa);
-        
-        
-        $gallery = new ResponsiveGalleryFactory();
-        $dbImageDatas = $gallery->getPhotoDatasFromDb($mock);
-        dd($dbImageDatas);
+    
     }
-    */
+    
 
     
     
