@@ -104,7 +104,7 @@ class ResponsiveGalleryController
     {
         $galleryImage = GalleryImage::find($id);
 
-        return view('vendor.laravel-responsive-gallery.edit', compact('galleryImage'));
+        return view('laravel-responsive-gallery::edit', compact('galleryImage'));
     }
 
     /***************************************************************************/

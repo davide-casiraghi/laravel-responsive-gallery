@@ -95,8 +95,8 @@ class LaravelTest extends TestCase
          ]);
         
         $this->get("responsive-gallery/1/edit")
-            ->assertViewIs('laravel-responsive-gallery::edit');
+            ->assertViewIs('laravel-responsive-gallery::edit')
             //->assertViewHas('galleryImage')
-            //->assertStatus(200);
+            ->assertStatus(200);
     }
 }
