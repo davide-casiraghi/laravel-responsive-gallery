@@ -5,11 +5,9 @@ namespace DavideCasiraghi\ResponsiveGallery\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
-use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 
 class ResponsiveGalleryController
 {
-    
     /***************************************************************************/
 
     /**
@@ -87,6 +85,7 @@ class ResponsiveGalleryController
     public function show($id = null)
     {
         $galleryImage = GalleryImage::find($id);
+
         return view('laravel-responsive-gallery::show', compact('galleryImage'));
     }
 
