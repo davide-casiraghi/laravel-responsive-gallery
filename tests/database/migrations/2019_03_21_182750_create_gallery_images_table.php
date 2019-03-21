@@ -13,7 +13,7 @@ class CreateGalleryImagesTable extends Migration
      */
     public function up()
     {
-         Schema::create('gallery_images', function (Blueprint $table) {
+        Schema::create('gallery_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('file_name')->unique();
             $table->text('description')->nullable();
@@ -22,6 +22,7 @@ class CreateGalleryImagesTable extends Migration
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
