@@ -99,4 +99,13 @@ class LaravelTest extends TestCase
             //->assertViewHas('galleryImage')
             ->assertStatus(200);
     }
+    
+    /** @test */
+    public function the_route_create_can_be_accessed()
+    {        
+        $this->get("responsive-gallery/create")
+            ->assertViewIs('laravel-responsive-gallery::create')
+            //->assertViewHas('galleryImage')
+            ->assertStatus(200);
+    }
 }

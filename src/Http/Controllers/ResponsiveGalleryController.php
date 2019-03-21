@@ -44,7 +44,7 @@ class ResponsiveGalleryController
      */
     public function create()
     {
-        return view('vendor.laravel-responsive-gallery.create');
+        return view('laravel-responsive-gallery::create');
     }
 
     /***************************************************************************/
