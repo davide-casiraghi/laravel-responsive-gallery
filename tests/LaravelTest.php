@@ -10,9 +10,9 @@ use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
 
-
 class LaravelTest extends TestCase
 {
+
     /**
      * Define environment setup.
      *
@@ -71,27 +71,29 @@ class LaravelTest extends TestCase
         
    }
 
-
     /** @test */
-    /*public function the_console_command_returns_a_quote()
+    public function the_route_show_can_be_accessed()
     {
-        $this->withoutMockingConsoleOutput();
-
-        PhpResponsiveQuote::shouldReceive('getRandomQuote')
-            ->once()
-            ->andReturn('some joke');
-
-        $this->artisan('php-responsive-quote');
-        $output = Artisan::output();
-        $this->assertSame('some joke'.PHP_EOL,$output);
-    }*/
-
-    /* @test */
-    public function the_route_can_be_accessed()
-    {
-        $this->get('responsive-gallery')
-             ->assertViewIs('laravel-responsive-gallery::test')
-             ->assertStatus(200);
+        GalleryImage::insert([
+             'file_name' => 'DSC_9470.jpg',
+             'description' => 'Photo description',
+             'alt' => 'Photo alt text',
+             'video_link' => 'https://www.youtube.com/fsda234',
+         ]);
+        
+        $this->get("responsive-gallery/1")
+            ->assertViewIs('laravel-responsive-gallery::show')
+            ->assertViewHas('galleryImage')
+            ->assertStatus(200);
     }
+    
+    /** @test */
+    /*public function the_index_page_can_be_accessed()
+    {
+        //$this->get('Gallery.index')
+        $this->get('responsive-gallery')->dump();
+            // ->assertViewIs('laravel-responsive-gallery::test')
+            // ->assertStatus(200);
+    }*/
     
 }
