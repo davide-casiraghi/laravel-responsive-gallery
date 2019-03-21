@@ -4,12 +4,9 @@ namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Capsule\Manager as Capsule;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
-
 
 class LaravelTest extends TestCase
 {
@@ -29,15 +26,15 @@ class LaravelTest extends TestCase
             'prefix'   => '',
         ]);
     }
-    
+
     /**
      * Setup the test environment.
      */
     protected function setUp(): void
     {
         parent::setUp();
-        
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadLaravelMigrations(['--database' => 'testbench']);
     }
 
@@ -54,23 +51,21 @@ class LaravelTest extends TestCase
             'ResponsiveGallery' => ResponsiveGallery::class, // facade called ResponsiveQuote and the name of the facade class
         ];
     }
-    
+
     /** @test */
     public function it_runs_the_migrations()
-    {        
-       GalleryImage::insert([
+    {
+        GalleryImage::insert([
             'file_name' => 'DSC_9470.jpg',
             'description' => 'Photo description',
             'alt' => 'Photo alt text',
             'video_link' => 'https://www.youtube.com/fsda234',
         ]);
-        
-        $image = GalleryImage::where('file_name', '=', 'DSC_9470.jpg')->first();
-        
-        $this->assertEquals('DSC_9470.jpg', $image->file_name);
-        
-   }
 
+        $image = GalleryImage::where('file_name', '=', 'DSC_9470.jpg')->first();
+
+        $this->assertEquals('DSC_9470.jpg', $image->file_name);
+    }
 
     /** @test */
     /*public function the_console_command_returns_a_quote()
@@ -110,5 +105,4 @@ class LaravelTest extends TestCase
              ->assertStatus(500);
         //dd($aa);
     }
-    
 }
