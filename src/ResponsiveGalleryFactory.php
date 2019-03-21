@@ -11,7 +11,7 @@ class ResponsiveGalleryFactory
     /**
      *  Returns the plugin parameters.
      *  @param array $matches       Result from the regular expression on the string from the article
-     *  @param string $publicPath   
+     *  @param string $publicPath
      *  @return array $ret          The array containing the parameters
      **/
     public static function getGalleryParameters($matches, $publicPath)
@@ -166,9 +166,9 @@ class ResponsiveGalleryFactory
     /************************************************************************/
 
     /**
-     *  Prepare the gallery HTML
+     *  Prepare the gallery HTML.
      *  @param array $images       Images array [file_path, short_desc, long_desc]
-     *  @param array $parameters      
+     *  @param array $parameters
      *  @return string $ret        The HTML to print on screen
      **/
     public function prepareGallery($images, $parameters)
@@ -230,6 +230,7 @@ class ResponsiveGalleryFactory
     public static function get_file_extension($file_name)
     {
         $ret = substr(strrchr($file_name, '.'), 1);
+
         return $ret;
     }
 
@@ -265,7 +266,7 @@ class ResponsiveGalleryFactory
     public function getPhotoDatasFromDb()
     {
         $ret = GalleryImage::get()->keyBy('file_name');
-        
+
         return $ret;
     }
 
@@ -274,7 +275,7 @@ class ResponsiveGalleryFactory
     /**
      *  Return the post body with the gallery HTML instead of the found snippet.
      *  @param array  $postBody       The text name
-     *  @param string $publicPath     
+     *  @param string $publicPath
      *  @return array $ret            $postBody with the HTML Galleries
      **/
     public function getGallery($postBody, $publicPath)
