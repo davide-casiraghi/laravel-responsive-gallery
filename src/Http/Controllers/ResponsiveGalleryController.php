@@ -57,8 +57,6 @@ class ResponsiveGalleryController
      */
     public function store(Request $request)
     {
-
-        // Validate form datas
         $validator = Validator::make($request->all(), [
                     'file_name' => 'required',
                 ]);
@@ -118,9 +116,9 @@ class ResponsiveGalleryController
      */
     public function update(Request $request, $id)
     {
-        /*request()->validate([
-                'file_name' => 'required',
-            ]);*/
+        /*$validator = Validator::make($request->all(), [
+                    'file_name' => 'required',
+                ])->validate();*/
 
         $galleryImage = GalleryImage::find($id);
         
