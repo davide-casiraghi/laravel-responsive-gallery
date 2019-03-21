@@ -15,44 +15,6 @@ use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
 class LaravelTest extends TestCase
 {
     /**
-     * Create the tables this model needs for testing.
-     */
-    /*public static function setUpBeforeClass() : void
-    {
-        $capsule = new Capsule;
-        $capsule->addConnection([
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
-
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
-
-        Capsule::schema()->create('gallery_images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('file_name')->unique();
-            $table->text('description')->nullable();
-            $table->string('alt')->nullable();
-            $table->string('video_link')->nullable();
-            $table->timestamps();
-        });
-
-        //Model::unguard();
-
-        GalleryImage::create([
-            'file_name' => 'DSC_9470.jpg',
-            'description' => 'Photo description',
-            'alt_text' => 'Photo alt text',
-            'video_link' => 'https://www.youtube.com/fsda234',
-        ]);
-
-        //Artisan::call('migrate', ['--database' => ':memory:']);
-        //$this->artisan('migrate', ['--database' => ':memory:'])->run();
-    }
-    */
-    
-    /**
      * Define environment setup.
      *
      * @param  \Illuminate\Foundation\Application  $app
