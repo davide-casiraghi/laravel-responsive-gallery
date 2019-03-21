@@ -108,4 +108,18 @@ class LaravelTest extends TestCase
             //->assertViewHas('galleryImage')
             ->assertStatus(200);
     }
+    
+    /** @test */
+    public function the_route_destroy_can_be_accessed()
+    {   
+        GalleryImage::insert([
+             'file_name' => 'DSC_9470.jpg',
+             'description' => 'Photo description',
+             'alt' => 'Photo alt text',
+             'video_link' => 'https://www.youtube.com/fsda234',
+         ]);
+         
+        $this->delete("responsive-gallery/1")
+            ->assertStatus(302);
+    }
 }
