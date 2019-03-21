@@ -1,7 +1,6 @@
 <?php
 
-namespace Orchestra\Testbench\Tests\Databases;
-//namespace DavideCasiraghi\ResponsiveGallery\Tests;
+namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use Orchestra\Testbench\TestCase;
 use Illuminate\Support\Facades\Artisan;
