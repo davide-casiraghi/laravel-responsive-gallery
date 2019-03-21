@@ -31,8 +31,7 @@ class ResponsiveGalleryServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-responsive-gallery/'),
         ]);
-        
-        
+
         Route::group(['middleware' => 'web'], function () {
             //Route::get('responsive-gallery', ResponsiveGalleryController::class);
             Route::resource('responsive-gallery', ResponsiveGalleryController::class);
