@@ -85,6 +85,7 @@ class LaravelTest extends TestCase
     /** @test */
     public function the_route_edit_can_be_accessed()
     {        
+        //dd(env('APP_ENV'));
         GalleryImage::insert([
              'file_name' => 'DSC_9470.jpg',
              'description' => 'Photo description',
@@ -94,7 +95,7 @@ class LaravelTest extends TestCase
         
         $this->get("responsive-gallery/1/edit")
             ->assertViewIs('laravel-responsive-gallery::edit')
-            //->assertViewHas('galleryImage')
+            ->assertViewHas('galleryImage')
             ->assertStatus(200);
     }
     
