@@ -3,14 +3,12 @@
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
 use Orchestra\Testbench\TestCase;
-use Illuminate\Support\Facades\Artisan;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
 
 class LaravelTest extends TestCase
 {
-
     /**
      * Define environment setup.
      *
@@ -77,8 +75,8 @@ class LaravelTest extends TestCase
              'alt' => 'Photo alt text',
              'video_link' => 'https://www.youtube.com/fsda234',
          ]);
-        
-        $this->get("responsive-gallery/1")
+
+        $this->get('responsive-gallery/1')
             ->assertViewIs('laravel-responsive-gallery::show')
             ->assertViewHas('galleryImage')
             ->assertStatus(200);
