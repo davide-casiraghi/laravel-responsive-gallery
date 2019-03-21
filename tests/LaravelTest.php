@@ -75,23 +75,9 @@ class LaravelTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        //Artisan::call('migrate', ['--database' => 'testing']);
-        // To run migrations that are only used for testing purposes
-        //$this->loadMigrationsFrom(__DIR__ . '/database/migrations');
         
-        $this->loadLaravelMigrations(['--database' => 'testbench']);
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
-        //$this->artisan('migrate', ['--database' => 'testbench'])->run();
-        
-        /*$this->loadMigrationsFrom([
-            '--database' => 'testbench',
-            '--path' => realpath(__DIR__ . '/database/migrations'),
-        ]);*/
-        
-        
-        
-        //$tables = \DB::select('SHOW TABLES');
-        //dd($tables);
+        $this->loadLaravelMigrations(['--database' => 'testbench']);
     }
 
     protected function getPackageProviders($app)
@@ -109,12 +95,12 @@ class LaravelTest extends TestCase
     }
     
     /** @test */
-    /*public function it_runs_the_migrations()
+    public function it_runs_the_migrations()
     {        
        GalleryImage::insert([
             'file_name' => 'DSC_9470.jpg',
             'description' => 'Photo description',
-            'alt_text' => 'Photo alt text',
+            'alt' => 'Photo alt text',
             'video_link' => 'https://www.youtube.com/fsda234',
         ]);
         
@@ -122,8 +108,7 @@ class LaravelTest extends TestCase
         
         $this->assertEquals('DSC_9470.jpg', $image->file_name);
         
-        dd("sdfsd");
-   }*/
+   }
 
 
     /** @test */
@@ -164,4 +149,5 @@ class LaravelTest extends TestCase
              ->assertStatus(500);
         //dd($aa);
     }
+    
 }
