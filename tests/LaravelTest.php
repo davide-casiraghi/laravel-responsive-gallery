@@ -133,8 +133,6 @@ class LaravelTest extends TestCase
              'video_link' => 'https://www.youtube.com/fsda234',
          ]);
          
-         
-         
           $request = new \Illuminate\Http\Request();
           $request->replace([
               'file_name' => 'DSC_9475.jpg',
@@ -143,17 +141,24 @@ class LaravelTest extends TestCase
               'video_link' => 'https://www.youtube.com/fsda234',
           ]);
 
-         
          $this->put('responsive-gallery/1', [$request, 1])
             ->assertStatus(302);
-    
-        //$this->put("responsive-gallery/1")
-        //    ->assertStatus(302);
-        
-        /*$this->followingRedirects()
-    ->post('/login', ['email' => 'john@example.com'])
-    ->assertStatus(200);*/
-    
-    
     }
+    
+    /** @test */
+    /*public function the_route_store_can_be_accessed()
+    {             
+          $request = new \Illuminate\Http\Request();
+          $request->replace([
+              'file_name' => 'DSC_9475.jpg',
+              'description' => 'Photo description updated',
+              'alt' => 'Photo alt text',
+              'video_link' => 'https://www.youtube.com/fsda234',
+          ]);
+
+         $this->post('responsive-gallery', [$request])
+            ->assertStatus(302);
+    }*/
+    
+    
 }

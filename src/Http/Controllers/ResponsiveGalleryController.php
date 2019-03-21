@@ -57,12 +57,12 @@ class ResponsiveGalleryController
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        /*$validator = Validator::make($request->all(), [
                     'file_name' => 'required',
                 ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
-        }
+        }*/
 
         $gallery_image = new GalleryImage();
         $gallery_image->file_name = $request->get('file_name');
