@@ -118,12 +118,12 @@ class ResponsiveGalleryController
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
+        /*request()->validate([
                 'file_name' => 'required',
-            ]);
+            ]);*/
 
         $galleryImage = GalleryImage::find($id);
-
+        
         $galleryImage->update($request->all());
 
         return redirect()->route('responsive-gallery.index')

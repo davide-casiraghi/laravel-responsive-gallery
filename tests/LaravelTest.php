@@ -122,4 +122,38 @@ class LaravelTest extends TestCase
         $this->delete("responsive-gallery/1")
             ->assertStatus(302);
     }
+    
+    /** @test */
+    public function the_route_update_can_be_accessed()
+    {   
+        GalleryImage::insert([
+             'file_name' => 'DSC_9470.jpg',
+             'description' => 'Photo description',
+             'alt' => 'Photo alt text',
+             'video_link' => 'https://www.youtube.com/fsda234',
+         ]);
+         
+         
+         
+          $request = new \Illuminate\Http\Request();
+          $request->replace([
+              'file_name' => 'DSC_9475.jpg',
+              'description' => 'Photo description updated',
+              'alt' => 'Photo alt text',
+              'video_link' => 'https://www.youtube.com/fsda234',
+          ]);
+
+         
+         $this->put('responsive-gallery/1', [$request, 1])
+            ->assertStatus(302);
+    
+        //$this->put("responsive-gallery/1")
+        //    ->assertStatus(302);
+        
+        /*$this->followingRedirects()
+    ->post('/login', ['email' => 'john@example.com'])
+    ->assertStatus(200);*/
+    
+    
+    }
 }
