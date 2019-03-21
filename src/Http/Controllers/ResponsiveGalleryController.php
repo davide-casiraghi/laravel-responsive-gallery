@@ -11,11 +11,23 @@ class ResponsiveGalleryController
 {
     public function __invoke()
     {
+        return view('laravel-responsive-gallery::test');
         //return ResponsiveGallery::getRandomQuote();
-        $galleryImages = GalleryImage::orderBy('file_name')->paginate(20);
+        //$galleryImages = GalleryImage::orderBy('file_name')->paginate(20);
+        //dd($galleryImages);
+        //dd("fasdfasd");
+        
+//    return view('laravel-responsive-gallery::layout');
+      /* return view('laravel-responsive-gallery::create',[
+               'errors' => "", 
+           ]);*/
+        
+        /*return view('laravel-responsive-gallery::index',[
+                'galleryImages' => GalleryImage::get(),
+                'i' => 1,
+                'searchKeywords' => ""
+            ]);*/
 
-        return view('vendor.laravel-responsive-gallery.index', compact('galleryImages'))
-                            ->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     /***************************************************************************/

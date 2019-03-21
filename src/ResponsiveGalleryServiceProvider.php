@@ -31,10 +31,12 @@ class ResponsiveGalleryServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-responsive-gallery/'),
         ]);
+        
+        Route::get('responsive-gallery', ResponsiveGalleryController::class);
 
-        Route::group(['middleware' => 'web'], function () {
+        /*Route::group(['middleware' => 'web'], function () {
             Route::resource('responsive-gallery', ResponsiveGalleryController::class);
-        });
+        });*/
     }
 
     public function register()

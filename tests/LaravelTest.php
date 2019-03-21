@@ -89,26 +89,9 @@ class LaravelTest extends TestCase
     /* @test */
     public function the_route_can_be_accessed()
     {
-        /*$body = 'Etiam aliquet orci tortor';
-        $publicPath = '/aaaa/bbb/';
-
-        ResponsiveGallery::shouldReceive('getGallery')
-            ->once()
-            ->with($body,$publicPath)
-            ->andReturn('some joke');*/
-        //->andReturn(true);
-
-        //dd(GalleryImage::get());
-        /*ResponsiveGallery::shouldReceive('getRandomQuote')
-            ->once()
-            ->andReturn('some joke');*/
-        //dd($this->get('responsive-gallery'));
-        $aa = $this->get('responsive-gallery')
-            // ->assertViewIs('responsive-gallery::index')
-            // ->assertViewHas('joke')
-             //->assertViewHas('joke','some joke')
-             ->assertStatus(500);
-        //dd($aa);
+        $this->get('responsive-gallery')
+             ->assertViewIs('laravel-responsive-gallery::test')
+             ->assertStatus(200);
     }
     
 }
