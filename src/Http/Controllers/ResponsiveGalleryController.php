@@ -120,7 +120,7 @@ class ResponsiveGalleryController
                 ])->validate();*/
 
         $galleryImage = GalleryImage::find($id);
-        
+
         $galleryImage->update($request->all());
 
         return redirect()->route('responsive-gallery.index')
