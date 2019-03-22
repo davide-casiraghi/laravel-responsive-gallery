@@ -8,10 +8,13 @@
 
 
 
-# Laravel Responsive Gallery
+# Laravel Responsive Gallery 🏞
 A PHP library to create responsive galleries that are organized into Pinterest like columns.   
 To generate the grid is used [Bricklayer.js](http://bricklayer.js.org/).
 To open the image in a popup is used [Fancybox 3](https://fancyapps.com/fancybox/3/).
+
+
+## The snippet 
 
 The library replace all the occurrences of this kind of snippet
 ```
@@ -33,6 +36,17 @@ With the HTML code of a responsive gallery.
     ...
 </div>
 ```
+## The images data management interface (optional)
+
+Trough this interface you can specify for each image:
+- the **alt text**
+- the **description** shown below the fancy box when the user click on the thumbnail
+- a **youtube or vimeo link** (in this case a play icon will be show above the image and clicking on it will open a fancybox showing the related video)
+
+Once you have published the views in your Laravel application, you can access to the images management interface at this address
+www.yourwebsite.com/responsive-gallery/
+
+The snippet works also without using the images data management interface.
 
 ## How to use it
 [Read Tutorial and Documentation →](https://github.com/davide-casiraghi/laravel-responsive-gallery/wiki)
