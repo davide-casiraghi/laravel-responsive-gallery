@@ -1,4 +1,4 @@
-{{--@extends('vendor.laravel-responsive-gallery.layout')--}}
+@extends('laravel-responsive-gallery::layout')
 
 @section('content')
 

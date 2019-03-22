@@ -1,7 +1,4 @@
-{{--@extends('vendor.laravel-responsive-gallery.layout')--}}
-{{--@if (env('APP_ENV')!='testing')
-    @extends('vendor.laravel-responsive-gallery.layout')
-@endif--}}
+@extends('laravel-responsive-gallery::layout')
 
 @section('content')
 
