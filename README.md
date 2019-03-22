@@ -41,7 +41,7 @@ With the HTML code of a responsive gallery.
 Trough this interface you can specify for each image:
 - the **alt text**
 - the **description** shown below the fancy box when the user click on the thumbnail
-- a **youtube or vimeo link**(in this case a play icon will be show and clicking on the thumbnail will open the fancybox showing the video)
+- a **youtube or vimeo link** (in this case a play icon will be show and clicking on the thumbnail will open the fancybox showing the video)
 
 Once you have published the views in your Laravel application, you can access to the images management interface at this address
 www.yourwebsite.com/responsive-gallery/
