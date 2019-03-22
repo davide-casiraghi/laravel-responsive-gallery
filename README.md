@@ -36,7 +36,7 @@ With the HTML code of a responsive gallery.
     ...
 </div>
 ```
-## The images data management interface 
+## The images data management interface (optional)
 
 Trough this interface you can specify for each image:
 - the **alt text**
