@@ -17,7 +17,6 @@ class ResponsiveGalleryController
      */
     public function index(Request $request)
     {
-        
         $searchKeywords = $request->input('keywords');
 
         if ($searchKeywords) {

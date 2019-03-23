@@ -145,37 +145,33 @@ class LaravelTest extends TestCase
 
     /** @test */
     public function the_route_store_can_be_accessed()
-    {     
+    {
         $data = [
             'file_name' => 'DSC_9475.jpg',
             'description' => 'Photo description updated',
             'alt' => 'Photo alt text',
             'video_link' => 'https://www.youtube.com/fsda234',
         ];
-        
+
         $this
             ->followingRedirects()
             ->post('/responsive-gallery', $data);
 
-        $this->assertDatabaseHas('gallery_images', ['file_name' => 'DSC_9475.jpg']);    
+        $this->assertDatabaseHas('gallery_images', ['file_name' => 'DSC_9475.jpg']);
     }
-    
+
     /** @test */
     public function the_route_index_can_be_accessed()
-    {     
+    {
         $this->get('responsive-gallery')
-                    ->assertStatus(200); 
-        
-        
-        
-        
+                    ->assertStatus(200);
+
         /*still to finish*/
         $request = new \Illuminate\Http\Request();
         $request->replace([
               'keywords' => 'test keywords',
-          ]);              
-        $this->get('responsive-gallery',[$request])
-                    ->assertStatus(200); 
+          ]);
+        $this->get('responsive-gallery', [$request])
+                    ->assertStatus(200);
     }
-    
 }
