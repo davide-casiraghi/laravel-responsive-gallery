@@ -153,11 +153,18 @@ class LaravelTest extends TestCase
             'video_link' => 'https://www.youtube.com/fsda234',
         ];
         
-        $response = $this
-                    ->followingRedirects()
-                    ->post('/responsive-gallery', $data);
+        $this
+            ->followingRedirects()
+            ->post('/responsive-gallery', $data);
 
         $this->assertDatabaseHas('gallery_images', ['file_name' => 'DSC_9475.jpg']);    
+    }
+    
+    /** @test */
+    public function the_route_index_can_be_accessed()
+    {     
+        $this->get('responsive-gallery')
+                    ->assertStatus(200); 
     }
     
 }

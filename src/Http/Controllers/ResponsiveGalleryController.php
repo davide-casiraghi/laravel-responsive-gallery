@@ -17,6 +17,7 @@ class ResponsiveGalleryController
      */
     public function index(Request $request)
     {
+        
         $searchKeywords = $request->input('keywords');
 
         if ($searchKeywords) {
@@ -28,7 +29,7 @@ class ResponsiveGalleryController
                                     ->paginate(20);
         }
 
-        return view('vendor.laravel-responsive-gallery.index', compact('galleryImages'))
+        return view('laravel-responsive-gallery::index', compact('galleryImages'))
                             ->with('i', (request()->input('page', 1) - 1) * 20)
                             ->with('searchKeywords', $searchKeywords);
     }
