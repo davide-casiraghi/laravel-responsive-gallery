@@ -165,6 +165,17 @@ class LaravelTest extends TestCase
     {     
         $this->get('responsive-gallery')
                     ->assertStatus(200); 
+        
+        
+        
+        
+        /*still to finish*/
+        $request = new \Illuminate\Http\Request();
+        $request->replace([
+              'keywords' => 'test keywords',
+          ]);              
+        $this->get('responsive-gallery',[$request])
+                    ->assertStatus(200); 
     }
     
 }
