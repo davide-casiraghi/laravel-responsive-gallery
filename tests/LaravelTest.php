@@ -143,18 +143,21 @@ class LaravelTest extends TestCase
             ->assertStatus(302);
     }
 
-    /* @test */
-    /*public function the_route_store_can_be_accessed()
-    {
-          $request = new \Illuminate\Http\Request();
-          $request->replace([
-              'file_name' => 'DSC_9475.jpg',
-              'description' => 'Photo description updated',
-              'alt' => 'Photo alt text',
-              'video_link' => 'https://www.youtube.com/fsda234',
-          ]);
+    /** @test */
+    public function the_route_store_can_be_accessed()
+    {     
+        $data = [
+            'file_name' => 'DSC_9475.jpg',
+            'description' => 'Photo description updated',
+            'alt' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ];
+        
+        $response = $this
+                    ->followingRedirects()
+                    ->post('/responsive-gallery', $data);
 
-         $this->post('responsive-gallery', [$request])
-            ->assertStatus(302);
-    }*/
+        $this->assertDatabaseHas('gallery_images', ['file_name' => 'DSC_9475.jpg']);    
+    }
+    
 }
