@@ -167,8 +167,6 @@ class LaravelTest extends TestCase
                     ->assertStatus(200); 
         
         
-        
-        
         /*still to finish*/
         $request = new \Illuminate\Http\Request();
         $request->replace([
@@ -176,6 +174,12 @@ class LaravelTest extends TestCase
           ]);              
         $this->get('responsive-gallery',[$request])
                     ->assertStatus(200); 
+    }
+        
+    /** @test */
+    public function the_facade_can_be_reached(){
+        $testExtension = ResponsiveGallery::get_file_extension("test.jpg");
+        $this->assertStringContainsString($testExtension,"jpg");
     }
     
 }
