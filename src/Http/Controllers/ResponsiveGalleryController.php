@@ -8,7 +8,6 @@ use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 
 //use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 
-
 class ResponsiveGalleryController
 {
     /***************************************************************************/

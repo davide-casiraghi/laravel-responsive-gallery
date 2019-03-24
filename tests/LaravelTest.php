@@ -174,11 +174,11 @@ class LaravelTest extends TestCase
         $this->get('responsive-gallery', [$request])
                     ->assertStatus(200);
     }
-        
+
     /** @test */
-    public function the_facade_can_be_reached(){
-        $testExtension = ResponsiveGallery::get_file_extension("test.jpg");
-        $this->assertStringContainsString($testExtension,"jpg");
+    public function the_facade_can_be_reached()
+    {
+        $testExtension = ResponsiveGallery::get_file_extension('test.jpg');
+        $this->assertStringContainsString($testExtension, 'jpg');
     }
-    
 }
