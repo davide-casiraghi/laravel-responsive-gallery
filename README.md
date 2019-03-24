@@ -1,9 +1,10 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/davide-casiraghi/laravel-responsive-gallery.svg?style=flat-square)](https://packagist.org/packages/davide-casiraghi/laravel-responsive-gallery)
 <a href="https://travis-ci.org/davide-casiraghi/laravel-responsive-gallery"><img src="https://travis-ci.org/davide-casiraghi/laravel-responsive-gallery.svg" alt="Build Status"></a>
 [![StyleCI](https://styleci.io/repos/175794655/shield?style=flat-square)](https://styleci.io/repos/175794655)
-[![GitHub last commit](https://img.shields.io/github/last-commit/davide-casiraghi/laravel-responsive-gallery.svg)](https://github.com/davide-casiraghi/laravel-responsive-gallery) 
 [![Quality Score](https://img.shields.io/scrutinizer/g/davide-casiraghi/laravel-responsive-gallery.svg?style=flat-square)](https://scrutinizer-ci.com/g/davide-casiraghi/laravel-responsive-gallery)
 [![Coverage Status](https://scrutinizer-ci.com/g/davide-casiraghi/laravel-responsive-gallery/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/davide-casiraghi/laravel-responsive-gallery/)
+<a href="https://codeclimate.com/github/davide-casiraghi/laravel-responsive-gallery/maintainability"><img src="https://api.codeclimate.com/v1/badges/84b220bf3e3718a9afc6/maintainability" /></a>
+[![GitHub last commit](https://img.shields.io/github/last-commit/davide-casiraghi/laravel-responsive-gallery.svg)](https://github.com/davide-casiraghi/laravel-responsive-gallery) 
 
 
 
