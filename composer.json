@@ -30,7 +30,7 @@
                 "DavideCasiraghi\\ResponsiveGallery\\ResponsiveGalleryServiceProvider"
             ],
             "aliases": {
-                "Gallery": "DavideCasiraghi\\ResponsiveGallery\\Facades\\Gallery"
+                "Gallery": "DavideCasiraghi\\ResponsiveGallery\\ResponsiveGallery"
             }
         }
     }

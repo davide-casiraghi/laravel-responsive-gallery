@@ -6,6 +6,9 @@ use Validator;
 use Illuminate\Http\Request;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 
+use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
+
+
 class ResponsiveGalleryController
 {
     /***************************************************************************/
@@ -17,6 +20,9 @@ class ResponsiveGalleryController
      */
     public function index(Request $request)
     {
+        
+        $exampleExtension = ResponsiveGallery::get_file_extension("test.jpg");
+        dd($exampleExtension);
         
         $searchKeywords = $request->input('keywords');
 
