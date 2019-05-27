@@ -282,7 +282,7 @@ class ResponsiveGalleryFactory
     {
         $matches = $this->getGallerySnippetOccurrences($postBody);
 
-        if ($matches){
+        if ($matches) {
             foreach ($matches as $key => $single_gallery_matches) {
                 $parameters = self::getGalleryParameters($single_gallery_matches, $publicPath);
 
