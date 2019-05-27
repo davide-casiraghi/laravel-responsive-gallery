@@ -282,31 +282,33 @@ class ResponsiveGalleryFactory
     {
         $matches = $this->getGallerySnippetOccurrences($postBody);
 
-        foreach ($matches as $key => $single_gallery_matches) {
-            $parameters = self::getGalleryParameters($single_gallery_matches, $publicPath);
+        if ($matches){
+            foreach ($matches as $key => $single_gallery_matches) {
+                $parameters = self::getGalleryParameters($single_gallery_matches, $publicPath);
 
-            if (is_dir($parameters['images_dir'])) {
-                // Get images file name array
-                $image_files = $this->getImageFiles($parameters['images_dir']);
+                if (is_dir($parameters['images_dir'])) {
+                    // Get images file name array
+                    $image_files = $this->getImageFiles($parameters['images_dir']);
 
-                if (! empty($image_files)) {
-                    $this->generateThumbs($parameters['images_dir'], $parameters['thumbs_dir'], $parameters['thumbs_size'], $image_files);
-                    $dbImageDatas = $this->getPhotoDatasFromDb();
+                    if (! empty($image_files)) {
+                        $this->generateThumbs($parameters['images_dir'], $parameters['thumbs_dir'], $parameters['thumbs_size'], $image_files);
+                        $dbImageDatas = $this->getPhotoDatasFromDb();
 
-                    // Create Images array [file_path, short_desc, long_desc]
-                    $images = $this->createImagesArray($image_files, $parameters['gallery_url'], $dbImageDatas);
+                        // Create Images array [file_path, short_desc, long_desc]
+                        $images = $this->createImagesArray($image_files, $parameters['gallery_url'], $dbImageDatas);
 
-                    // Prepare Gallery HTML
-                    $galleryHtml = $this->prepareGallery($images, $parameters);
+                        // Prepare Gallery HTML
+                        $galleryHtml = $this->prepareGallery($images, $parameters);
+                    } else {
+                        $galleryHtml = "<div class='alert alert-warning' role='alert'>The directory specified exist but it doesn't contain images</div>";
+                    }
                 } else {
-                    $galleryHtml = "<div class='alert alert-warning' role='alert'>The directory specified exist but it doesn't contain images</div>";
+                    $galleryHtml = "<div class='alert alert-warning' role='alert'>Image directory not found<br />".$parameters['images_dir'].'</div>';
                 }
-            } else {
-                $galleryHtml = "<div class='alert alert-warning' role='alert'>Image directory not found<br />".$parameters['images_dir'].'</div>';
-            }
 
-            // Replace the TOKEN found in the article with the generatd gallery HTML
-            $postBody = str_replace($parameters['token'], $galleryHtml, $postBody);
+                // Replace the TOKEN found in the article with the generatd gallery HTML
+                $postBody = str_replace($parameters['token'], $galleryHtml, $postBody);
+            }
         }
 
         return $postBody;
