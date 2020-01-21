@@ -2,9 +2,9 @@
 
 namespace DavideCasiraghi\ResponsiveGallery;
 
+use DavideCasiraghi\ResponsiveGallery\Http\Controllers\ResponsiveGalleryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use DavideCasiraghi\ResponsiveGallery\Http\Controllers\ResponsiveGalleryController;
 
 class ResponsiveGalleryServiceProvider extends ServiceProvider
 {

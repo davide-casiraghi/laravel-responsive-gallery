@@ -49,7 +49,7 @@ class ResponsiveGalleryFactory
      *  @param array $desired_height    height of the thumbnail
      *  @return void
      **/
-    public function generate_single_thumb_file($src, $dest, $desired_width, $desired_height) : void
+    public function generate_single_thumb_file($src, $dest, $desired_width, $desired_height): void
     {
         // Read the source image
         $source_image = imagecreatefromjpeg($src);
@@ -89,7 +89,7 @@ class ResponsiveGalleryFactory
      *  @param array  $image_files
      *  @return void
      **/
-    public function generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files) : void
+    public function generateThumbs($images_dir, $thumbs_dir, $thumbs_size, $image_files): void
     {
         // Thumbnails size
         $thumbs_width = $thumbs_size['width'];

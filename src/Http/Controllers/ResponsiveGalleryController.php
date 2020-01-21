@@ -2,9 +2,9 @@
 
 namespace DavideCasiraghi\ResponsiveGallery\Http\Controllers;
 
-use Validator;
-use Illuminate\Http\Request;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
+use Illuminate\Http\Request;
+use Validator;
 
 //use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
 

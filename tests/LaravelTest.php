@@ -2,10 +2,10 @@
 
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
-use Orchestra\Testbench\TestCase;
-use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\Facades\ResponsiveGallery;
+use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
 {
@@ -70,11 +70,11 @@ class LaravelTest extends TestCase
     public function the_route_show_can_be_accessed()
     {
         GalleryImage::insert([
-             'file_name' => 'DSC_9470.jpg',
-             'description' => 'Photo description',
-             'alt' => 'Photo alt text',
-             'video_link' => 'https://www.youtube.com/fsda234',
-         ]);
+            'file_name' => 'DSC_9470.jpg',
+            'description' => 'Photo description',
+            'alt' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ]);
 
         $this->get('responsive-gallery/1')
             ->assertViewIs('laravel-responsive-gallery::show')
@@ -86,11 +86,11 @@ class LaravelTest extends TestCase
     public function the_route_edit_can_be_accessed()
     {
         GalleryImage::insert([
-             'file_name' => 'DSC_9470.jpg',
-             'description' => 'Photo description',
-             'alt' => 'Photo alt text',
-             'video_link' => 'https://www.youtube.com/fsda234',
-         ]);
+            'file_name' => 'DSC_9470.jpg',
+            'description' => 'Photo description',
+            'alt' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ]);
 
         $this->get('responsive-gallery/1/edit')
             ->assertViewIs('laravel-responsive-gallery::edit')
@@ -111,11 +111,11 @@ class LaravelTest extends TestCase
     public function the_route_destroy_can_be_accessed()
     {
         GalleryImage::insert([
-             'file_name' => 'DSC_9470.jpg',
-             'description' => 'Photo description',
-             'alt' => 'Photo alt text',
-             'video_link' => 'https://www.youtube.com/fsda234',
-         ]);
+            'file_name' => 'DSC_9470.jpg',
+            'description' => 'Photo description',
+            'alt' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ]);
 
         $this->delete('responsive-gallery/1')
             ->assertStatus(302);
@@ -125,19 +125,19 @@ class LaravelTest extends TestCase
     public function the_route_update_can_be_accessed()
     {
         GalleryImage::insert([
-             'file_name' => 'DSC_9470.jpg',
-             'description' => 'Photo description',
-             'alt' => 'Photo alt text',
-             'video_link' => 'https://www.youtube.com/fsda234',
-         ]);
+            'file_name' => 'DSC_9470.jpg',
+            'description' => 'Photo description',
+            'alt' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ]);
 
         $request = new \Illuminate\Http\Request();
         $request->replace([
-              'file_name' => 'DSC_9475.jpg',
-              'description' => 'Photo description updated',
-              'alt' => 'Photo alt text',
-              'video_link' => 'https://www.youtube.com/fsda234',
-          ]);
+            'file_name' => 'DSC_9475.jpg',
+            'description' => 'Photo description updated',
+            'alt' => 'Photo alt text',
+            'video_link' => 'https://www.youtube.com/fsda234',
+        ]);
 
         $this->put('responsive-gallery/1', [$request, 1])
             ->assertStatus(302);
@@ -169,8 +169,8 @@ class LaravelTest extends TestCase
         /*still to finish*/
         $request = new \Illuminate\Http\Request();
         $request->replace([
-              'keywords' => 'test keywords',
-          ]);
+            'keywords' => 'test keywords',
+        ]);
         $this->get('responsive-gallery', [$request])
                     ->assertStatus(200);
     }

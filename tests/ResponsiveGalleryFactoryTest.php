@@ -2,12 +2,12 @@
 
 namespace DavideCasiraghi\ResponsiveGallery\Tests;
 
-use PHPUnit\Framework\TestCase;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Capsule\Manager as Capsule;
 use DavideCasiraghi\ResponsiveGallery\Models\GalleryImage;
 use DavideCasiraghi\ResponsiveGallery\ResponsiveGalleryFactory;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Artisan;
+use PHPUnit\Framework\TestCase;
 
 //use DavideCasiraghi\ResponsiveGallery\Tests\Models\GalleryImage;
 
@@ -16,7 +16,7 @@ class ResponsiveGalleryFactoryTest extends TestCase
     /**
      * Create the tables this model needs for testing.
      */
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         $capsule = new Capsule;
 
